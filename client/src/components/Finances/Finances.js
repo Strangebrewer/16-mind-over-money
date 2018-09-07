@@ -140,28 +140,6 @@ export class Finances extends Component {
       .catch(err => console.log(err));
   }
 
-  updateChecking = transactions => {
-    const month = this.state.month;
-    const year = this.state.year;
-    const checkingObject = Helpers.processChecking(transactions);
-    API.updateChecking(month, year, checkingObject)
-      .then(res => {
-        const income = res.data[1].filter(chk => (chk.income === true));
-        const debits = res.data[1].filter(chk => (chk.income === false));
-        this.setState({
-          balances: res.data[0],
-          income: income,
-          debits: debits,
-          details: [res.data[2], res.data[3], res.data[4], res.data[5], res.data[6]]
-        });
-        this.setModal({
-          body: <h4>Database has been updated.</h4>,
-          buttons: <button onClick={this.closeModal}>OK</button>
-        })
-      })
-      .catch(err => console.log(err));
-  }
-
   updateSavings = savings => {
     //  will update db.Expenses for the month and update balances for checking and savings
     const month = this.state.month;
@@ -215,23 +193,47 @@ export class Finances extends Component {
       .catch(err => console.log(err));
   }
 
-  handleCCCharge = charge => {
+  handleTransaction = charge => {
     const month = this.state.month;
     const year = this.state.year;
-
-    API.creditCardCharge(month, year, charge)
-      .then(res => {
-        this.setState({
-          balances: res.data[0],
-          ccSpend: res.data[1],
-          details: [res.data[2], res.data[3], res.data[4], res.data[5], res.data[6]]
+    if (charge.category === 'income') {
+      charge.income = true;
+      charge.category = "";
+    }
+    if (charge.source === 'checking') {
+      const checkingObject = Helpers.processChecking(charge);
+      API.updateChecking(month, year, checkingObject)
+        .then(res => {
+          const income = res.data[1].filter(chk => (chk.income === true));
+          const debits = res.data[1].filter(chk => (chk.income === false));
+          this.setState({
+            balances: res.data[0],
+            income: income,
+            debits: debits,
+            details: [res.data[2], res.data[3], res.data[4], res.data[5], res.data[6]]
+          });
+          this.setModal({
+            body: <h4>Database has been updated.</h4>,
+            buttons: <button onClick={this.closeModal}>OK</button>
+          })
         })
-        this.setModal({
-          body: <h4>Database has been updated.</h4>,
-          buttons: <button onClick={this.closeModal}>OK</button>
+        .catch(err => console.log(err));
+    }
+    else {
+      API.creditCardCharge(month, year, charge)
+        .then(res => {
+          this.setState({
+            balances: res.data[0],
+            ccSpend: res.data[1],
+            details: [res.data[2], res.data[3], res.data[4], res.data[5], res.data[6]]
+          })
+          this.setModal({
+            body: <h4>Database has been updated.</h4>,
+            buttons: <button onClick={this.closeModal}>OK</button>
+          })
         })
-      })
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
+    }
   }
 
   render() {
@@ -259,7 +261,7 @@ export class Finances extends Component {
           transStyle={this.state.transStyle}
           transTopStyle={this.state.transTopStyle}
           savingsToChecking={this.savingsToChecking}
-          handleCCCharge={this.handleCCCharge}
+          handleTransaction={this.handleTransaction}
           toggleTransactions={this.toggleTransactions}
         />
         <div className="left-column">

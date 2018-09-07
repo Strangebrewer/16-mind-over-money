@@ -66,10 +66,9 @@
   border: 1px solid #000;
 }
 
-.cc-trans-container button:hover,
-.checking-trans-container button:hover,
-.savings-trans-container button:hover {
+.transactions-container button:hover {
   background-color: #0066ff;
+  cursor: pointer;
 }
 
 .transactions-inner > .savings-trans-container > .savings-trans-inner > button {

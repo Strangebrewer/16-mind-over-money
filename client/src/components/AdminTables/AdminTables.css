@@ -1,60 +1,13 @@
 /* General table styling */
 .main-table-container {
-  background: #ececec;  
-  background: linear-gradient(#dadada,#f1f1f1);
-  padding: 10px;
+  background: #000;
+  padding: 5px;
+  width: 1000px;
+  margin: 20px auto;
 }
 
 .ReactTable {
   background: #f1f1f1;
-}
-
-.table-title-div {
-  padding: 15px 0 5px 0;
-}
-
-.table-title-div h2 {
-  display: inline-block;
-}
-
-/* 'hide table' button styling */
-.table-title-div button {
-  vertical-align: middle;
-  border: none;
-  outline: transparent;
-  background: transparent;
-  text-decoration: underline;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Image modal image styling */
-.rental-img {
-  width: 250px;
-  margin: auto;
-}
-
-.rental-img-div {
-  display: inline-block;
-  padding: 20px;
-  margin: auto;
-}
-
-.rental-img-div > button {
-  width: 100%;
-  display: block;
-}
-
-/* drop down menus inside the tables */
-.table-select select {
-  border: none;
-  outline: transparent;
-  background-color: #dee9e5;
-  border-bottom: 1px dashed #79b8a0;
-  border: 1px dashed #79b8a0;
-  padding: 2px 0;
-  font-family: var(--font-Raleway);
-  width: 100%;
 }
 
 /* top header styling */
@@ -64,23 +17,25 @@
   font-weight: bold;
   font-size: 1rem;
   color: #fff;
-  background-color: #303170;
+  text-shadow: 0 0 1px #000,
+  0 0 2px #000;
+  background-color: #34660acc;
 }
 
 .-headerGroups > .rt-tr > .rt-th:first-child {
-  background-color: #303170;
+  background-color: #34660acc;
   border-left: none;
 }
 
 /* sub-header styling */
 .-header > .rt-tr > .rt-th:first-child {
-  background: #5e60d8;
+  background: #5fbe10;
   border-bottom: 1px solid #a3a3a3;
 }
 
 .rt-resizable-header {
   outline: transparent;
-	background-color: #5e60d8;
+	background-color: #5fbe10;
   color: #ffffff;
   border: 1px solid #a3a3a3;
   border-top: none;
@@ -88,7 +43,7 @@
 }
 
 .rt-resizable-header:hover {
-	background-color: #5e60d8b7;
+	background-color: #5fbe10b7;
 }
 
 /* remove filter searchbox above icon button column */
@@ -148,13 +103,12 @@
   font-size: .7rem;
   color: #fff;
   padding: 5px 10px;
-  background-color: #5e60d8e0;
+  background-color: #5fbe10e0;
   text-align: center;
   border-radius: 5px;
   z-index: 2;
 }
 
-.fa-save-div:hover .fa-save-tooltip,
 .fa-trash-alt-div:hover .fa-trash-alt-tooltip,
 .fa-sticky-note-div:hover .fa-sticky-note-tooltip  {
   visibility: visible;
@@ -164,10 +118,6 @@
 /* filter search box over the button columns aren't necessary */
 .user-table .-filters > div > div:first-child input {
   display: none;
-}
-
-.fa-unlock-alt-div:hover .fa-unlock-alt-tooltip  {
-  visibility: visible;
 }
 
 /* Rental Table styling */
@@ -181,9 +131,4 @@
 .rental-table .ReactTable  div.rt-tr > div:nth-child(2) {
   overflow: visible;
   position: relative;
-}
-
-.fa-upload-div:hover .fa-upload-tooltip,
-.fa-images-div:hover .fa-images-tooltip  {
-  visibility: visible;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { PageContainer } from "../../components/Elements/PageContainer";
+import { ButtonArray } from "../../components/Elements/ButtonArray";
 // import Modal from "../../components/Elements/Modal";
 // import LoadingModal from "../../components/Elements/LoadingModal";
 import { FastFade } from "../../components/Fade";
@@ -170,8 +171,30 @@ class Admin extends Component {
               array={[
                 <div className="admin-btn-array">
                   <h2>Admin Options</h2>
+                  <ButtonArray
+                  accounts={accounts}
+                    toggleExpenses={this.toggleExpenses}
+                    toggleOtherExpenses={this.toggleOtherExpenses}
+                    toggleCcSpendTable={this.toggleCcSpendTable}
+                    toggleCCTable={this.toggleCCTable}
+                    toggleCCTable={this.toggleCCTable}
+                    toggleCCTable={this.toggleCCTable}
+                    toggleCCTable={this.toggleCCTable}
+                    toggleCCTable={this.toggleCCTable}
+                    toggleCCTable={this.toggleCCTable}
+                    toggleCheckingTable={this.toggleCheckingTable}
+                    toggleDetailTable={this.toggleDetailTable}
+                    toggleDetailTable={this.toggleDetailTable}
+                    toggleDetailTable={this.toggleDetailTable}
+                    toggleDetailTable={this.toggleDetailTable}
+                    toggleDetailTable={this.toggleDetailTable}
+                    hideAllTables={this.hideAllTables}
+                  />
                   {/* checking, cc1, detail1, detail2, and savings1 are defaults */}
-                  <div className="expenses-btns">
+
+
+
+                  {/* <div className="expenses-btns">
                     <h3>Monthly Expenses</h3>
                     <button onClick={this.toggleExpenses}>Bills</button>
                     <button onClick={this.toggleOtherExpenses}>CCs &amp; Savings</button>
@@ -200,7 +223,7 @@ class Admin extends Component {
                   </div>
                   <div className="tables-forms-btns">
                     <button onClick={this.hideAllTables}>Clear Tables</button>
-                  </div>
+                  </div> */}
                 </div>,
 
                 <div className="table-container">

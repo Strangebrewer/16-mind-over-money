@@ -7,14 +7,9 @@ class Transactions extends React.Component {
     category: "",
     day: "",
     description: "",
-    savings1: "",
-    savings2: "",
-    savings3: "",
-    ccAmount: "",
-    ccCategory: "",
-    ccDay: "",
-    ccDescription: "",
-    ccSource: ""
+    source: "",
+    savingsSource: "",
+    savingsAmount: ""
   }
 
   // Standard input change controller
@@ -29,26 +24,27 @@ class Transactions extends React.Component {
 
   //  Will need to update server functionality to accept 'income' as a category.
   handleTransaction = () => {
-    this.props.handleCCCharge({
-      day: this.state.ccDay,
-      amount: this.state.ccAmount,
-      category: this.state.ccCategory,
-      description: this.state.ccDescription,
-      source: this.state.ccSource
+    this.props.handleTransaction({
+      day: this.state.day,
+      amount: this.state.amount,
+      category: this.state.category,
+      description: this.state.description,
+      source: this.state.source
     });
     this.setState({
-      ccDay: "",
-      ccAmount: "",
-      ccDescription: ""
+      day: "",
+      amount: "",
+      description: ""
     })
   };
 
   savingsToChecking = () => {
-    this.props.savingsToChecking(this.state);
+    this.props.savingsToChecking({
+      source: this.state.savingsSource,
+      amount: this.state.savingsAmount
+    });
     this.setState({
-      savings1: "",
-      savings2: "",
-      savings3: "",
+      savingsAmount: ""
     })
   };
 
@@ -138,7 +134,7 @@ class Transactions extends React.Component {
               <div className="savings-trans-inner">
                 <div>
                   <label htmlFor="source">Select an account:</label>
-                  <select id="source-select" name="SavingsSource" onChange={this.handleInputChange}>
+                  <select id="source-select" name="savingsSource" onChange={this.handleInputChange}>
                     <option></option>
                     {savings1 ? <option value="savings1">{savings1}</option> : null}
                     {savings2 ? <option value="savings2">{savings2}</option> : null}
@@ -148,27 +144,20 @@ class Transactions extends React.Component {
                 <div>
                   <label>Enter amount:</label>
                   <input
-                    value={this.state.savings2}
+                    value={this.state.savingsAmount}
                     onChange={this.handleInputChange}
-                    name="savings2"
+                    name="savingsAmount"
                     type="text"
                   />
                 </div>
-                {savings1 || savings2 || savings3
-                  ?
-                  <div>
-                    <button
-                      disabled={
-                        !this.state.savings1
-                        && !this.state.savings2
-                        && !this.state.savings3
-                      }
-                      onClick={this.savingsToChecking}
-                    >
-                      submit
+                <div>
+                  <button
+                    disabled={!this.state.savingsSource}
+                    onClick={this.savingsToChecking}
+                  >
+                    submit
                    </button>
-                  </div>
-                  : null}
+                </div>
               </div>
             </div>
           </div>

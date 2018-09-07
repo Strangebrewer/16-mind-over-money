@@ -102,9 +102,9 @@ export const Helpers = {
       checkingCredit = Money.add(checkingCredit, parseFloat(transaction).toFixed(2).toString())
     }
 
-    if (transactions.savings1) savToCheckFunction('savings1Debit', transactions.savings1, 'savings1Credit');
-    if (transactions.savings2) savToCheckFunction('savings2Debit', transactions.savings2, 'savings2Credit');
-    if (transactions.savings3) savToCheckFunction('savings3Debit', transactions.savings3, 'savings3Credit');
+    if (transactions.source === 'savings1') savToCheckFunction('savings1Debit', transactions.amount, 'savings1Credit');
+    if (transactions.source === 'savings2') savToCheckFunction('savings2Debit', transactions.amount, 'savings2Credit');
+    if (transactions.source === 'savings3') savToCheckFunction('savings3Debit', transactions.amount, 'savings3Credit');
 
     transactionObject.checkingCredit = checkingCredit;
     transactionObject.checkingDebit = '0.00';

@@ -1,0 +1,109 @@
+.admin-btn-array {
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}
+
+.admin-btn-array {
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.buttons {
+  min-height: 33px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.buttons button {
+  animation: bounceInDown 900ms 200ms ease-in-out both;
+  border: none;
+  height: 33px;
+  width: 150px;
+  text-decoration: none;
+  padding-top: 9px;
+  outline-width: 0px;
+  z-index: 990;
+  color: #81b375;
+  text-align: center;
+  line-height: 26px;
+  display: inline-block;
+}
+
+.buttons button:not(.active) {
+  box-shadow: inset 0 1px 1px #5fbe10cc, inset 0 -1px 0px #65713b33, 0 9px 16px 0 #0000004d, 0 4px 3px 0 #0000004d, 0 0 0 1px #0a0a1e;
+  background-image: linear-gradient(#2b5127, #1a3917);
+  text-shadow: 0 0 21px #d4e4ceaf, 0 -1px 0 #2c471d;
+}
+
+.buttons button:not(.active):hover,
+.buttons button:not(.active):focus {
+  transition: color 200ms linear, text-shadow 500ms linear;
+  color: #b9d2ad;
+  text-shadow: 0 0 21px #d2e4ce80, 0 0 10px #cee4ceec, 0 0 2px #153c15;
+}
+
+.buttons button:not(.active):active {
+  color: #e4e3ce !important
+}
+
+.buttons button.active,
+.buttons button:active {
+  box-shadow: 0 9px 16px 0 #00000031, 0 0 0 1px #10220c, 0 2px 1px 0 #4f8741a2, inset 0 0 4px 3px #0e160873;
+  background-image: linear-gradient(#282e13, #30471d);
+  text-shadow: 0 0 21px #d4e4ce80, 0 0 10px #d4e4ce66, 0 0 2px #1d3c15;
+  color: #e4e3ce;
+}
+
+.buttons button.active:before,
+.buttons button:active:before {
+  content: "";
+  height: 36px;
+  background-image: linear-gradient(#33692300, #3f6923 41%, #3f6923 59%, #33692300);
+  box-shadow: -2px 0 6px 0 #3f6923;
+}
+
+.buttons button.active:after,
+.buttons button:active:after {
+  content: "";
+  height: 36px;
+  background-image: linear-gradient(#37692300, #3f6923 41%, #3f6923 59%, #33692300);
+  box-shadow: 2px 0 6px 0 #3f6923;
+}
+
+.buttons button.active {
+  z-index: 1000
+}
+
+.buttons button:active {
+  z-index: 999
+}
+
+.buttons button:last-of-type {
+  border-radius: 0 7px 7px 0;
+}
+
+.buttons button:first-of-type {
+  border-radius: 7px 0 0 7px;
+}
+
+.buttons button i:before {
+  font-size: 22px;
+}
+
+.buttons button i.icon-bar-chart:before {
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+.buttons button i.icon-sync:before {
+  font-size: 20px;
+  margin-top: 1px;
+}
+
+.buttons button i.icon-download:before {
+  font-size: 19px;
+  margin-top: 1px;
+}
