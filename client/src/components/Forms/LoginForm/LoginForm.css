@@ -1,0 +1,132 @@
+.login-form-wrapper input[name="event-controller"] {
+  display: none;
+}
+
+.login-form-container,
+.signup-form-container {
+  display: table;
+  box-shadow: 8px 16px 20px 0 #000000ce,
+  inset 1px 1px 3px 4px #91ff0077,
+  .5px .5px 0 3px var(--mainBorder);
+  background-color: var(--bg);
+  border-radius: 20px;
+  margin: 50px auto;
+  width: 150px;
+}
+
+.login-form-container > label,
+.signup-form-container > label {
+  cursor: pointer;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 22px;
+  color: var(--mainBorder);
+  text-shadow: 0 0 1px #111,
+  0 0 2px #444,
+  0 0 5px var(--mainBorder),
+  0 0 10px var(--mainBorder),
+  0 0 20px var(--mainBorder),
+  0 0 30px var(--mainBorder);
+}
+
+/* CSS WHEN HIDDEN */
+
+.login-content,
+.signup-content {
+  position: relative;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  transition: height .2s ease-in-out,
+    width .25s ease-in-out .15s;
+}
+
+.login-content form,
+.signup-content form {
+  opacity: 0;
+  width: 280px;
+  padding: 0 20px;
+  transition: opacity .15s ease-in-out;
+}
+
+.login-content form input,
+.signup-content form input {
+  width: 100%;
+  outline: none;
+  background-color: #fff;
+  box-shadow: inset 1px 1px 1px 2.5px #00000049;
+  border: 2px solid var(--inputBord);
+  color: var(--inputText);
+  font-size: 16px;
+  padding: 2px 10px 0 10px;
+  line-height: 30px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+/* CSS ANimation for Forms */
+#show-login-form:checked ~ .login-content {
+  transition: height .22s ease-in-out .48s, width .3s ease-in-out .2s;
+  height: 150px;
+  width: 280px;
+}
+
+#show-login-form:checked ~ .login-content form {
+  opacity: 1;
+}
+
+#show-login-form:checked .signup-content {
+  height: 0;
+  width: 150px;
+}
+
+#show-login-form:checked .signup-content form {
+  opacity: 0;
+}
+
+#show-signup-form:checked ~ .signup-content  {
+  transition: height .23s ease-in-out .48s, width .3s ease-in-out .2s;
+  height: 200px;
+  width: 280px;
+}
+
+#show-signup-form:checked ~ .signup-content form {
+  opacity: 1;
+}
+
+#show-signup-form:checked .login-content {
+  height: 0;
+  width: 150px;
+}
+
+#show-signup-form:checked .login-content form {
+  opacity: 0;
+}
+/* END CSS Animation for Forms */
+
+.login-content form button,
+.signup-content form button {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #23e0e734;
+  border-radius: 5px;
+  margin: 0 auto 10px auto;
+  padding: 3px 15px;
+  transition: background-color 0.3s, box-shadow 0.3s, text-shadow 0.3s, color 0.3s;
+  box-shadow: inset 0 0 1em #00aaaa80, 0 0 1em #00aaaa80;
+  border: 1px solid #23e1e7;
+}
+
+.login-content form button:hover,
+.signup-content form button:hover {
+  background-color: #23e1e7;
+  text-shadow: 0 0 1px #000,
+  0 0 2px #000;
+  box-shadow: inset 0 0 0 #ffffff80, 0 0 1.5em #23e1e7a2;
+  color: #ffffff;
+}

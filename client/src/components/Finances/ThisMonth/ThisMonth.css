@@ -1,0 +1,77 @@
+.this-month-container {
+  background-color: #fff;
+  margin: 20px 0;
+  padding: 20px 20px 25px 20px;
+  width: 300px;
+  border: 1px solid #bdbdbd;
+  border-radius: 20px;
+  box-shadow: inset 0 0 20px 1px #888;
+  z-index: 99;
+}
+
+.this-month-container h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.this-month-inner {
+  font-size: .85rem;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.this-month-container h3 {
+  padding: 15px 0 5px 15px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.this-month-inner h3:first-child {
+  padding-top: 10px;
+}
+
+.this-month-expenses,
+.this-month-credit,
+.this-month-details,
+.this-month-net {
+  background-color: #ececec;
+  font-size: .85rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+
+.this-month-inner > div:first-child > div > h4:last-child,
+.this-month-inner > div:nth-child(2) > div > h4:last-child {
+  font-weight: bold;
+}
+
+
+
+
+.this-month-container h4 {
+  padding: 3px 0 3px 15px;
+}
+
+.this-month-container h4 span {
+  float: right;
+  padding-right: 5px;
+}
+
+.this-month-net p {
+  line-height: 1.3;
+  padding: 3px 10px;
+  color: #0022b8;
+  font-style: italic;
+}
+
+.red-text {
+  font-weight: bold;
+  color: #df0000;
+}
+
+.green-text {
+  font-weight: bold;
+  color: #20a000;
+}

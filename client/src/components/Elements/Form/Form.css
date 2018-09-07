@@ -1,0 +1,66 @@
+.input-tooltip {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 100px;
+}
+
+.names-div {
+  /* position: relative; */
+}
+
+.names-div span {
+  /* color: #111;
+  background: #e4e4e4;
+  border: 1px solid var(--inputBorder);
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 0 1px #000,
+  0 0 2px #000,
+  0 0 3px #fff,
+   0 0 4px #fff,
+  0 0 5px #fff,
+  0 0 10px #fff,
+  0 0 20px #fff;
+  z-index: 99; */
+}
+
+.checking-names-div:hover .checking-input-tooltip {
+  visibility: visible;
+}
+
+.shelter-names-div:hover .shelter-input-tooltip {
+  visibility: visible;
+}
+
+.util1-names-div:hover .util1-input-tooltip {
+  visibility: visible;
+}
+
+.car-names-div:hover .car-input-tooltip {
+  visibility: visible;
+}
+
+.insurance-names-div:hover .insurance-input-tooltip {
+  visibility: visible;
+}
+
+.cc1-names-div:hover .cc1-input-tooltip {
+  visibility: visible;
+}
+
+.cash-names-div:hover .cash-input-tooltip {
+  visibility: visible;
+}
+
+.detail1-names-div:hover .detail1-input-tooltip {
+  visibility: visible;
+}
+
+.other1-names-div:hover .other1-input-tooltip {
+  visibility: visible;
+}
+
+.savings1-names-div:hover .savings1-input-tooltip {
+  visibility: visible;
+}

@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "test",
+    "database": "my_finances",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "d75h4u4mm6aih2tg",
+    "password": "q8pvthujgi955s0h",
+    "database": "f8ufzsu7itllfb6i",
+    "host": "y0nkiij6humroewt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}

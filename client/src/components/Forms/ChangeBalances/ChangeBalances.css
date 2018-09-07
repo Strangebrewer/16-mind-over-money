@@ -1,0 +1,75 @@
+.balance-change-container {
+  background-color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 300px;
+  border: 1px solid #bdbdbd;
+  border-radius: 20px;
+  box-shadow: inset 0 0 20px 1px #888;
+}
+
+.balance-change-container h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.balance-change-data {
+  background-color: #ececec;
+  font-size: .85rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.balance-change-container h4 {
+  padding: 3px 0 3px 5px;
+}
+
+.balance-change-container h4 span {
+  float: right;
+  padding-right: 5px;
+  font-weight: bold;
+}
+
+.balance-change-inner {
+  font-size: .85rem;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.balance-change-container select,
+.balance-change-container input {
+  width: 100%;
+  background-color: #ececec;
+  outline: none;
+  border: none;
+  border: 1px solid #0066ff;
+  font-size: 14px;
+  padding: 0 10px;
+  line-height: 25px;
+  border-radius: 4px;
+  margin: 2px 0 10px 0;
+}
+
+.balance-change-container select {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.balance-change-container button {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  background-color: #0066ffa1;
+  border-radius: 5px;
+  margin: auto;
+  padding: 3px 15px;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+  border: 1px solid #000;
+}
+
+.balance-change-container button:hover {
+  background-color: #0066ff;
+}

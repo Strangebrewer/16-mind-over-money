@@ -1,0 +1,22 @@
+
+@media (min-width: 677px) {
+  .manage-form-container {
+    width: 620px;
+    margin: 20px auto 10px auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .balance-change-container,
+  .name-and-pw-container {
+    margin: unset;
+  }
+}
+
+@media (min-width: 1050px) {
+  .manage-form-container {
+    width: 940px;
+    margin: 20px auto 10px auto;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

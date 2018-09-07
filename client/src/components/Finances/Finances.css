@@ -1,0 +1,15 @@
+.logged-in .current-date {
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 5px 0;
+}
+
+.logged-in .current-date span {
+  color: #0066ff;
+}
+
+@media (min-width: 677px) {
+  .logged-in .current-date {
+    font-size: 1.5rem;
+  }
+}

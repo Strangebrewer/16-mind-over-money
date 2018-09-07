@@ -1,0 +1,26 @@
+.fast-fade-appear {
+  opacity: 0;
+}
+
+.fast-fade-appear.fast-fade-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.slower-fade-appear {
+  opacity: 0;
+}
+
+.slower-fade-appear.slower-fade-appear-active {
+  opacity: 1;
+  transition: opacity .75s ease-in;
+}
+
+.slow-fade-appear {
+  opacity: 0;
+}
+
+.slow-fade-appear.slow-fade-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}

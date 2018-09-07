@@ -1,0 +1,163 @@
+.logged-in {
+  width: 300px;
+  margin: auto;
+  position: relative;
+}
+
+@media (min-width: 677px) {
+  .logged-in {
+    width: 640px;
+    margin: auto;
+  }
+  .date-select {
+    margin: auto;
+  }
+  .transactions-container,
+  .balances-container,
+  .this-month-container,
+  .expenses-container,
+  .cc-payments-container,
+  .savings-container {
+    width: 640px;
+  }
+  .charge-inner,
+  .savings-trans-inner,
+  .balances-inner,
+  .expenses-inner,
+  .cc-payments-inner,
+  .savings-inner,
+  .this-month-inner > div > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .balances-inner,
+  .this-month-inner {
+    width: 600px;
+  }
+  .balances-inner {
+    justify-content: space-around;
+  }
+  .charge-inner div:first-child,
+  .charge-inner div:nth-child(2),
+  .charge-inner div:nth-child(3),
+  .charge-inner div:nth-child(4) {
+    width: 24%;
+  }
+  .charge-inner div:nth-child(5),
+  .charge-inner div:last-child {
+    width: 100%;
+  }
+  .charge-inner div:last-child {
+    margin-bottom: 10px;
+  }  
+  .savings-trans-inner div:first-child,
+  .savings-trans-inner div:nth-child(2) {
+    width: 49.35%;
+  }
+  .savings-trans-inner div:last-child {
+    width: 100%;
+  }
+  .balances-inner h4 {
+    width: 40%;
+  }
+  .this-month-inner > div > div > h4 {
+    width: 48%;
+  }
+  .this-month-inner > div:first-child > div > h4:last-child,
+  .this-month-inner > div:nth-child(2) > div > h4:last-child {
+    width: 100%;
+    margin: 0 340px 0 30px;
+    font-weight: bold;
+  }
+  .expenses-inner div,
+  .cc-payments-inner div,
+  .savings-inner div {
+    width: 48%;
+  }
+  .expenses-inner div:last-child,
+  .cc-payments-inner div:last-child,
+  .savings-inner div:last-child {
+    width: 100%;
+  }
+  .expenses-container h2 {
+    margin-bottom: 12px;
+  }
+  .savings-container {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 1050px) {  
+  .logged-in {
+    width: 960px;
+  }
+  .transactions-container,
+  .expenses-container,
+  .cc-payments-container,
+  .savings-container {
+    float: right;
+  }
+  .balances-container,
+  .this-month-container {
+    width: 300px;
+  }
+  .left-column {
+    float: left;
+  }
+  .balances-inner,
+  .this-month-inner > div > div {
+    display: block;
+  }
+  .balances-inner,
+  .this-month-inner {
+    width: unset;
+  }
+  .balances-inner {
+    justify-content: unset;
+  }
+  .balances-inner h4 {
+    width: unset;
+  }
+  .this-month-inner > div > div > h4 {
+    width: unset;
+  }
+  .this-month-inner > div:first-child > div > h4:last-child,
+  .this-month-inner > div:nth-child(2) > div > h4:last-child {
+    width: unset;
+    margin: unset;
+  }
+  .savings-trans-inner {
+    justify-content: unset;
+  }
+  .transactions-container {
+    width: 960px;
+  }
+  .transactions-container h6 {
+    margin: 4px 0;
+  }
+  .charge-inner div:first-child,
+  .charge-inner div:nth-child(2),
+  .charge-inner div:nth-child(3),
+  .charge-inner div:nth-child(4),
+  .charge-inner div:nth-child(5) {
+    width: 17%;
+  }
+  .charge-inner div:last-child {
+    width: 10%;
+    margin-top: 15px;
+  }  
+  .savings-trans-inner div:first-child,
+  .savings-trans-inner div:nth-child(2) {
+    width: 17%;
+    margin-right: 9px;
+  }
+  .savings-trans-inner div:last-child {
+    width: 10%;
+    margin-top: 15px;
+    margin-left: unset;
+  }
+  .savings-trans-inner button {
+    margin-left: unset;
+  }
+}

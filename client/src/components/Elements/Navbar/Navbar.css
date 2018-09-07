@@ -1,0 +1,43 @@
+.navbar {
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  line-height: 1.1;
+}
+
+.navbar h4 {
+  font-size: 18px;
+}
+
+.navbar h4 span {
+  color: #0066ff;
+  font-weight: bold;
+}
+
+.navbar button {
+  background: transparent;
+  border: none;
+  outline: transparent;
+  font-size: unset;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+}
+
+.navbar button,
+.navbar button:visited {
+  color: #009e08;
+  text-decoration: none;
+}
+
+.navbar button:hover {
+  color: #0066ff;
+  text-decoration: underline;
+}
+
+@media (min-width: 677px) {
+  .navbar button {
+    font-size: unset;
+  }
+}
