@@ -200,6 +200,7 @@ export class Finances extends Component {
       charge.income = true;
       charge.category = "";
     }
+    if (charge.category === '(optional)') charge.category = "";
     if (charge.source === 'checking') {
       const checkingObject = Helpers.processChecking(charge);
       API.updateChecking(month, year, checkingObject)
