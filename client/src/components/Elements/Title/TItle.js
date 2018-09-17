@@ -1,7 +1,7 @@
 import React from "react";
 import "./Title.css";
 
-const Title = () => (
+export const Title = () => (
   <div className="money-title-container">
     <div className="svg-container">
       <svg viewBox="0 0 140 25">
@@ -23,5 +23,3 @@ const Title = () => (
     </div>
   </div>
 );
-
-export default Title;

@@ -1,13 +1,11 @@
 import React from "react";
-import { Input } from "../../Elements/Form";
+import { Inner, Outer, Textbox } from "../../Elements/Containers";
+import { FormBtn, Input } from "../../Elements/Form";
 import { API } from "../../../utils";
 import "./ChangeNames.css";
 
 class ChangeNames extends React.Component {
   state = {
-    style: {
-      nameStyle: {}
-    },
     checking: "",
     shelter: "",
     util1: "",
@@ -39,9 +37,7 @@ class ChangeNames extends React.Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   handleFormSubmit = () => {
@@ -123,13 +119,10 @@ class ChangeNames extends React.Component {
     const n = this.state;
     return (
       <div className="names-form-wrapper">
-        <div className="names-form-container" style={this.props.namesContainerStyle}>
-          <div onClick={this.props.toggleChangeNames}>
-            <h2>ACCOUNT NAMES</h2>
-          </div>
-          <div className="names-form-inner" style={this.props.changeNamesStyle}>
-            <div className="names-instructions">
-              <h6>Instructions</h6>
+        <Outer addedClass="names-form-container">
+          <h2>ACCOUNT NAMES</h2>
+          <Inner addedClass="names-form-inner">
+            <Textbox addedClass="names-instructions">
               <ul>
                 <li>Here, you can change the names of your accounts and other items.</li>
                 <li>Each field contains a placeholder - the current name if it has one, and an example if not.</li>
@@ -142,7 +135,8 @@ class ChangeNames extends React.Component {
                 <li>If you wish to delete them anyway and start fresh, perhaps you should setup a new username.</li>
                 <li>If you have any questions, suck it up, cupcake; you're on your own.</li>
               </ul>
-            </div>
+            </Textbox>
+
             <Input
               value={this.state.checking}
               onChange={this.handleInputChange}
@@ -152,7 +146,6 @@ class ChangeNames extends React.Component {
               label="Checking Account:"
               tooltip="This is where most transactions will be drawn from. Tracked in detail."
               placeholder={checking ? checking : "ex. 'Checking'"}
-
             />
             <Input
               value={this.state.shelter}
@@ -396,7 +389,7 @@ class ChangeNames extends React.Component {
               label="Savings 3:"
               placeholder={savings3 ? savings3 : "ex. 'Vacation'"}
             />
-            <button
+            <FormBtn
               disabled={
                 !n.checking && !n.shelter && !n.util1 && !n.util2 && !n.util3
                 && !n.util4 && !n.util5 && !n.car && !n.insurance && !n.cc1 && !n.cc2
@@ -405,11 +398,10 @@ class ChangeNames extends React.Component {
                 && !n.other2 && !n.other3 && !n.savings1 && !n.savings2 && !n.savings
               }
               onClick={this.handleFormSubmit}
-            >
-              Submit
-            </button>
-          </div>
-        </div>
+              value="submit"
+            />
+          </Inner>
+        </Outer>
       </div>
     )
   }

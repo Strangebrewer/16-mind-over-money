@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import ModalContent from "./ModalContent";
 import "./Modal.css";
 
-class Modal extends Component {
+class Modal extends React.Component {
 
   render() {
     if(!this.props.show) {
       return null;
     }
     return (
-      <div id="my-modal" className="my-modal">
+      <div className="modal">
         <ModalContent
           body={this.props.body}
           buttons={this.props.buttons}

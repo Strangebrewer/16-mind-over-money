@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { PageContainer } from "../../components/Elements/PageContainer";
+import { Page } from "../../components/Elements/Containers";
 import { ButtonArray } from "../../components/Elements/ButtonArray";
 // import Modal from "../../components/Elements/Modal";
 // import LoadingModal from "../../components/Elements/LoadingModal";
 import { FastFade } from "../../components/Fade";
 import { API, Helpers } from "../../utils";
-import "./Admin.css";
-import { ExpensesTable, CCTable, CheckingTable, DetailTable, CCSpendTable } from "../../components/AdminTables/";
+import { ExpensesTable, CCTable, CheckingTable, DetailTable, CCSpendTable } from "../../components/Tables/";
 
 class Admin extends Component {
   state = {
@@ -42,64 +41,56 @@ class Admin extends Component {
     API.getUserAccounts()
       .then(res => {
         const accounts = Helpers.processAccountNames(res.data);
-        this.setState({
-          accounts: accounts
-        })
+        this.setState({ accounts: accounts })
       })
   }
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   toggleTables = () => {
-    this.setState({
-      expenses: true
-    });
+    this.setState({ expenses: true });
   }
 
   toggleExpenses = () => {
-    this.setState({
-      expenses: !this.state.expenses
-    });
+    this.setState({ expenses: !this.state.expenses });
   };
 
   toggleOtherExpenses = () => {
-    this.setState({
-      otherExpenses: !this.state.otherExpenses
-    });
+    this.setState({ otherExpenses: !this.state.otherExpenses });
   }
 
   toggleCCTable = (cc) => {
-    if (cc === 'cc1') this.setState({ cc1: !this.state.cc1 });
-    if (cc === 'cc2') this.setState({ cc2: !this.state.cc2 });
-    if (cc === 'cc3') this.setState({ cc3: !this.state.cc3 });
-    if (cc === 'cc4') this.setState({ cc4: !this.state.cc4 });
-    if (cc === 'cc5') this.setState({ cc5: !this.state.cc5 });
-    if (cc === 'cc6') this.setState({ cc6: !this.state.cc6 });
+    switch (cc) {
+      case 'cc1': this.setState({ cc1: !this.state.cc1 }); break;
+      case 'cc2': this.setState({ cc2: !this.state.cc2 }); break;
+      case 'cc3': this.setState({ cc3: !this.state.cc3 }); break;
+      case 'cc4': this.setState({ cc4: !this.state.cc4 }); break;
+      case 'cc5': this.setState({ cc5: !this.state.cc5 }); break;
+      case 'cc6': this.setState({ cc6: !this.state.cc6 }); break;
+      default: ""
+    }
   }
 
   toggleCcSpendTable = () => {
-    this.setState({
-      ccSpend: !this.state.ccSpend
-    })
+    this.setState({ ccSpend: !this.state.ccSpend })
   }
 
   toggleCheckingTable = () => {
-    this.setState({
-      checking: !this.state.checking
-    })
+    this.setState({ checking: !this.state.checking })
   }
 
   toggleDetailTable = detail => {
-    if (detail === 'detail1') this.setState({ detail1: !this.state.detail1 });
-    if (detail === 'detail2') this.setState({ detail2: !this.state.detail2 });
-    if (detail === 'detail3') this.setState({ detail3: !this.state.detail3 });
-    if (detail === 'detail4') this.setState({ detail4: !this.state.detail4 });
-    if (detail === 'detail5') this.setState({ detail5: !this.state.detail5 });
+    switch (detail) {
+      case 'detail1': this.setState({ detail1: !this.state.detail1 }); break;
+      case 'detail2': this.setState({ detail2: !this.state.detail2 }); break;
+      case 'detail3': this.setState({ detail3: !this.state.detail3 }); break;
+      case 'detail4': this.setState({ detail4: !this.state.detail4 }); break;
+      case 'detail5': this.setState({ detail5: !this.state.detail5 }); break;
+      default: ""
+    }
   }
 
   hideAllTables = () => {
@@ -155,7 +146,7 @@ class Admin extends Component {
     const accounts = this.state.accounts;
 
     return (
-      <PageContainer
+      <Page
         loggedIn={this.props.loggedIn}
         location={this.props.location}
         pageStyle={this.state.adminStyle}
@@ -172,7 +163,7 @@ class Admin extends Component {
                 <div className="admin-btn-array">
                   <h2>Admin Options</h2>
                   <ButtonArray
-                  accounts={accounts}
+                    accounts={accounts}
                     toggleExpenses={this.toggleExpenses}
                     toggleOtherExpenses={this.toggleOtherExpenses}
                     toggleCcSpendTable={this.toggleCcSpendTable}
@@ -190,40 +181,6 @@ class Admin extends Component {
                     toggleDetailTable={this.toggleDetailTable}
                     hideAllTables={this.hideAllTables}
                   />
-                  {/* checking, cc1, detail1, detail2, and savings1 are defaults */}
-
-
-
-                  {/* <div className="expenses-btns">
-                    <h3>Monthly Expenses</h3>
-                    <button onClick={this.toggleExpenses}>Bills</button>
-                    <button onClick={this.toggleOtherExpenses}>CCs &amp; Savings</button>
-                  </div>
-                  <div className="credit-btns">
-                    <h3>CC Spending</h3>
-                    <button onClick={this.toggleCcSpendTable}>Totals</button>
-                    {accounts.cc1 ? <button onClick={() => this.toggleCCTable("cc1")}>{accounts.cc1}</button> : null}
-                    {accounts.cc2 ? <button onClick={() => this.toggleCCTable("cc2")}>{accounts.cc2}</button> : null}
-                    {accounts.cc3 ? <button onClick={() => this.toggleCCTable("cc3")}>{accounts.cc3}</button> : null}
-                    {accounts.cc4 ? <button onClick={() => this.toggleCCTable("cc4")}>{accounts.cc4}</button> : null}
-                    {accounts.cc5 ? <button onClick={() => this.toggleCCTable("cc5")}>{accounts.cc5}</button> : null}
-                    {accounts.cc6 ? <button onClick={() => this.toggleCCTable("cc6")}>{accounts.cc6}</button> : null}
-                  </div>
-                  <div className="checking-btns">
-                    <h3>{accounts.checking} Details</h3>
-                    <button onClick={this.toggleCheckingTable}>{accounts.checking}</button>
-                  </div>
-                  <div className="detail-btns">
-                    <h1>Category Tracking</h1>
-                    {accounts.detail1 ? <button onClick={() => this.toggleDetailTable("detail1")}>{accounts.detail1}</button> : null}
-                    {accounts.detail2 ? <button onClick={() => this.toggleDetailTable("detail2")}>{accounts.detail2}</button> : null}
-                    {accounts.detail3 ? <button onClick={() => this.toggleDetailTable("detail3")}>{accounts.detail3}</button> : null}
-                    {accounts.detail4 ? <button onClick={() => this.toggleDetailTable("detail4")}>{accounts.detail4}</button> : null}
-                    {accounts.detail5 ? <button onClick={() => this.toggleDetailTable("detail5")}>{accounts.detail5}</button> : null}
-                  </div>
-                  <div className="tables-forms-btns">
-                    <button onClick={this.hideAllTables}>Clear Tables</button>
-                  </div> */}
                 </div>,
 
                 <div className="table-container">
@@ -290,7 +247,7 @@ class Admin extends Component {
               ]}
             />
           ) : null}
-      </PageContainer>
+      </Page>
     );
   }
 }

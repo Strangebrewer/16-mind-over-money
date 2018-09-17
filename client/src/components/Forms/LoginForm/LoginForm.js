@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import Modal from "../../Elements/Modal";
 import { API } from "../../../utils";
 import dateFns from "date-fns";
 import "./LoginForm.css";
 
-class LoginForm extends Component {
+class LoginForm extends React.Component {
   state = {
     modal: {
       isOpen: false,
@@ -18,14 +18,11 @@ class LoginForm extends Component {
     loginPassword: "",
     signupUsername: "",
     signupPassword: "",
-    confirmPassword: "",
-    loadingModalOpen: false
+    confirmPassword: ""
   }
 
   closeModal = () => {
-    this.setState({
-      modal: { isOpen: false }
-    });
+    this.setState({ modal: { isOpen: false } });
   }
 
   setModal = (modalInput) => {
@@ -40,9 +37,7 @@ class LoginForm extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   handleLoginSubmit = event => {
@@ -126,7 +121,7 @@ class LoginForm extends Component {
 
           })
         } else {
-          console.log('username already taken');
+          this.setModal({ body: <h4>Username already taken.</h4> })
         }
       }).catch(error => {
         console.log('signup error: ');
@@ -145,7 +140,7 @@ class LoginForm extends Component {
         />
         <div className="login-form-wrapper" style={this.state.style.loginForm}>
           <div className="login-form-container">
-            <input tabIndex="-1" id="show-login-form" name="event-controller" type="radio"/>
+            <input tabIndex="-1" id="show-login-form" name="event-controller" type="radio" />
             <label htmlFor="show-login-form" id="login-visibility-controller">Login</label>
             <section className="login-content">
               <form>
@@ -180,7 +175,7 @@ class LoginForm extends Component {
           </div>
 
           <div className="signup-form-container">
-            <input tabIndex="-1" id="show-signup-form" name="event-controller" type="radio"/>
+            <input tabIndex="-1" id="show-signup-form" name="event-controller" type="radio" />
             <label htmlFor="show-signup-form" id="signup-visibility-controller">Signup</label>
             <section className="signup-content">
               <form>

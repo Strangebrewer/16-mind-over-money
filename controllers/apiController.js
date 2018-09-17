@@ -2,8 +2,6 @@ const db = require("../models");
 const Help = require("./controllerHelpers");
 
 module.exports = {
-  //  Call helper function for 'delete' names...
-
   setupNames: function (req, res) {
     const names = Help.processNameDeletion(req, req.body);
     db.User.update(names, { where: { id: req.user.id } })

@@ -1,15 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import LoginForm from "../../components/Forms/LoginForm";
 import InitialBalances from "../../components/Forms/InitialBalances";
 import InitialNames from "../../components/Forms/InitialNames";
 import { Finances } from "../../components/Finances";
-import { PageContainer } from "../../components/Elements/PageContainer";
+import { Page } from "../../components/Elements/Containers";
 import { FastFade } from "../../components/Fade";
 import { API, Helpers } from "../../utils";
-import "./Home.css";
 
-class Home extends Component {
+class Home extends React.Component {
   state = {
     accounts: {},
     HomeStyle: {},
@@ -40,9 +39,7 @@ class Home extends Component {
       }
     })
     setTimeout(() => {
-      this.setState({
-        redirectAdmin: true
-      });
+      this.setState({ redirectAdmin: true });
     }, 600);
   }
 
@@ -54,9 +51,7 @@ class Home extends Component {
       }
     })
     setTimeout(() => {
-      this.setState({
-        redirectManage: true
-      });
+      this.setState({ redirectManage: true });
     }, 600);
   }
 
@@ -68,7 +63,7 @@ class Home extends Component {
 
 
     return (
-      <PageContainer
+      <Page
         loggedIn={this.props.loggedIn}
         location={this.props.location}
         pageStyle={this.state.HomeStyle}
@@ -97,7 +92,7 @@ class Home extends Component {
             )
           ) : <FastFade array={[<LoginForm updateUser={this.props.updateUser} />]} />
         }
-      </PageContainer>
+      </Page>
     );
   }
 }

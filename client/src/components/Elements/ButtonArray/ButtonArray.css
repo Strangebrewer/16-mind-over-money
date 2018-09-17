@@ -26,51 +26,52 @@
   padding-top: 9px;
   outline-width: 0px;
   z-index: 990;
-  color: #81b375;
+  color: #7592b3;
   text-align: center;
   line-height: 26px;
   display: inline-block;
 }
 
 .buttons button:not(.active) {
-  box-shadow: inset 0 1px 1px #5fbe10cc, inset 0 -1px 0px #65713b33, 0 9px 16px 0 #0000004d, 0 4px 3px 0 #0000004d, 0 0 0 1px #0a0a1e;
-  background-image: linear-gradient(#2b5127, #1a3917);
-  text-shadow: 0 0 21px #d4e4ceaf, 0 -1px 0 #2c471d;
+  box-shadow: inset 0 2px 3px #008cffcc, inset 0 -1px 0px #3b607133, 0 9px 16px 0 #0000004d, 0 4px 3px 0 #0000004d, 0 0 0 1px #0a0a1e;
+  background-image: linear-gradient(#2686ec, #000e8d 88%, #870000 99%);
+  text-shadow: 0 0 21px #cedbe4af, 0 -1px 0 #1d3147;
 }
 
 .buttons button:not(.active):hover,
 .buttons button:not(.active):focus {
   transition: color 200ms linear, text-shadow 500ms linear;
-  color: #b9d2ad;
-  text-shadow: 0 0 21px #d2e4ce80, 0 0 10px #cee4ceec, 0 0 2px #153c15;
+  color: #adc1d2;
+  text-shadow: 0 0 21px #ced7e480, 0 0 10px #ced0e4ec, 0 0 2px #151b3c;
 }
 
 .buttons button:not(.active):active {
-  color: #e4e3ce !important
+  color: #cee4dd !important
 }
 
 .buttons button.active,
 .buttons button:active {
-  box-shadow: 0 9px 16px 0 #00000031, 0 0 0 1px #10220c, 0 2px 1px 0 #4f8741a2, inset 0 0 4px 3px #0e160873;
-  background-image: linear-gradient(#282e13, #30471d);
-  text-shadow: 0 0 21px #d4e4ce80, 0 0 10px #d4e4ce66, 0 0 2px #1d3c15;
-  color: #e4e3ce;
+  box-shadow: 0 9px 16px 0 #00000063, 0 0 0 1px #040b11, 0 2px 1px 0 #243f63a2, inset 0 0 4px 3px #13314773;
+  background-image: linear-gradient(#0a1222 1%,#1d63be 10%, #226ed3, #0b298b 85%, #870000e8 98%);
+  text-shadow: 0 0 21px #ced9e480, 0 0 10px #ced7e466, 0 0 2px #151f3c;
+  color: #cee4e2;
+  vertical-align: bottom;
 }
 
 .buttons button.active:before,
 .buttons button:active:before {
   content: "";
   height: 36px;
-  background-image: linear-gradient(#33692300, #3f6923 41%, #3f6923 59%, #33692300);
-  box-shadow: -2px 0 6px 0 #3f6923;
+  background-image: linear-gradient(#072c4e00, #234769 41%, #234769 59%, #23476900);
+  box-shadow: -2px 0 6px 0 #234769;
 }
 
 .buttons button.active:after,
 .buttons button:active:after {
   content: "";
   height: 36px;
-  background-image: linear-gradient(#37692300, #3f6923 41%, #3f6923 59%, #33692300);
-  box-shadow: 2px 0 6px 0 #3f6923;
+  background-image: linear-gradient(#23476900, #234769 41%, #234769 59%, #23476900);
+  box-shadow: 2px 0 6px 0 #234769;
 }
 
 .buttons button.active {

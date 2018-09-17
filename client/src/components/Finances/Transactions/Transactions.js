@@ -1,4 +1,6 @@
 import React from "react";
+import { FormBtn, Input, Label, Option, Select } from "../../Elements/Form";
+import { Inner, Outer } from "../../Elements/Containers";
 import "./Transactions.css";
 
 class Transactions extends React.Component {
@@ -14,12 +16,8 @@ class Transactions extends React.Component {
 
   // Standard input change controller
   handleInputChange = event => {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name
-    this.setState({
-      [name]: value
-    });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
   //  Will need to update server functionality to accept 'income' as a category.
@@ -43,126 +41,136 @@ class Transactions extends React.Component {
       source: this.state.savingsSource,
       amount: this.state.savingsAmount
     });
-    this.setState({
-      savingsAmount: ""
-    })
+    this.setState({ savingsAmount: "" })
   };
 
   render() {
-    const { checking, savings1, savings2, savings3, cc1, cc2, cc3, cc4, cc5, cc6, detail1, detail2, detail3, detail4, detail5 } = this.props.accountNames;
-    const month = this.props.month;
-    const year = this.props.year;
+    const accountNames = this.props.accountNames;
+    const { month, year } = this.props;
 
     return (
-      <React.Fragment>
-        <div className="transactions-container" style={this.props.transTopStyle}>
-          <h2>TRANSACTIONS</h2>
-          <div className="transactions-inner" style={this.props.transStyle}>
-            <div className="charge-form">
-              <h6>Record Spending for {month} {year}</h6>
-              <div className="charge-inner">
-                <div>
-                  <label htmlFor="source">Account:</label>
-                  <select id="source-select" name="source" onChange={this.handleInputChange}>
-                    <option></option>
-                    {checking ? <option value="checking">{checking}</option> : null}
-                    {cc1 ? <option value="cc1">{cc1}</option> : null}
-                    {cc2 ? <option value="cc2">{cc2}</option> : null}
-                    {cc3 ? <option value="cc3">{cc3}</option> : null}
-                    {cc4 ? <option value="cc4">{cc4}</option> : null}
-                    {cc5 ? <option value="cc5">{cc5}</option> : null}
-                    {cc6 ? <option value="cc6">{cc6}</option> : null}
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="category">Category:</label>
-                  <select id="category-select" name="category" onChange={this.handleInputChange}>
-                    <option>(optional)</option>
-                    <option value="income">Income</option>
-                    {detail1 ? <option value="detail1">{detail1}</option> : null}
-                    {detail2 ? <option value="detail2">{detail2}</option> : null}
-                    {detail3 ? <option value="detail3">{detail3}</option> : null}
-                    {detail4 ? <option value="detail4">{detail4}</option> : null}
-                    {detail5 ? <option value="detail5">{detail5}</option> : null}
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="day">Day:</label>
-                  <input
-                    value={this.state.day}
-                    onChange={this.handleInputChange}
-                    maxLength="2"
-                    name="day"
-                    type="text"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="amount">Amount:</label>
-                  <input
-                    value={this.state.amount}
-                    onChange={this.handleInputChange}
-                    name="amount"
-                    type="text"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="description">Description:</label>
-                  <input
-                    value={this.state.description}
-                    onChange={this.handleInputChange}
-                    name="description"
-                    type="text"
-                  />
-                </div>
-                <div>
-                  <button
-                    disabled={
-                      !this.state.source
-                      || !this.state.day
-                      || !this.state.amount
-                    }
-                    onClick={this.handleTransaction}
-                  >
-                    submit
-                </button>
-                </div>
-              </div>
-            </div>
+      <Outer addedClass="transactions-container">
+        <h2>TRANSACTIONS</h2>
+        <Inner addedClass="transactions-inner">
+          <div className="charge-form">
+            <h6>Record Spending for {month} {year}</h6>
+            <div className="charge-inner">
 
-            <div className="savings-trans-container">
-              <h6>Savings Transfer for {month} {year}</h6>
-              <div className="savings-trans-inner">
-                <div>
-                  <label htmlFor="source">Select an account:</label>
-                  <select id="source-select" name="savingsSource" onChange={this.handleInputChange}>
-                    <option></option>
-                    {savings1 ? <option value="savings1">{savings1}</option> : null}
-                    {savings2 ? <option value="savings2">{savings2}</option> : null}
-                    {savings3 ? <option value="savings3">{savings3}</option> : null}
-                  </select>
-                </div>
-                <div>
-                  <label>Enter amount:</label>
-                  <input
-                    value={this.state.savingsAmount}
-                    onChange={this.handleInputChange}
-                    name="savingsAmount"
-                    type="text"
-                  />
-                </div>
-                <div>
-                  <button
-                    disabled={!this.state.savingsSource}
-                    onClick={this.savingsToChecking}
-                  >
-                    submit
-                   </button>
-                </div>
+              <div>
+                <Label name="select-source">Account:</Label>
+                <Select id="select-source" name="source" onChange={this.handleInputChange}>
+                  <Option></Option>
+                  {Object.keys(accountNames)
+                    .filter(key => (
+                      this.props.accountNames[key] != undefined
+                      && (
+                        `${key}`.includes('check')
+                        || `${key}`.includes('cc')
+                      )
+                    ))
+                    .map((key, index) => <Option key={`${key}-${index}`} value={`${key}`}>{accountNames[key]}</Option>)}
+                </Select>
               </div>
+
+              <div>
+                <Label name="select-category">Category:</Label>
+                <Select id="select-category" name="category" onChange={this.handleInputChange}>
+                  <Option>(optional)</Option>
+                  <Option value="income">Income</Option>
+                  {Object.keys(accountNames)
+                    .filter(key => (
+                      this.props.accountNames[key] != undefined
+                      && `${key}`.includes('detail')
+                    ))
+                    .map((key, index) => <Option key={`${key}-${index}`} value={`${key}`}>{accountNames[key]}</Option>)}
+                </Select>
+              </div>
+
+              <div>
+                <Input
+                  value={this.state.day}
+                  onChange={this.handleInputChange}
+                  maxLength="2"
+                  name="day"
+                  type="text"
+                  label="Day:"
+                />
+              </div>
+
+              <div>
+                <Input
+                  value={this.state.amount}
+                  onChange={this.handleInputChange}
+                  name="amount"
+                  type="text"
+                  label="Amount:"
+                />
+              </div>
+
+              <div>
+                <Input
+                  value={this.state.description}
+                  onChange={this.handleInputChange}
+                  name="description"
+                  type="text"
+                  label="Description:"
+                />
+              </div>
+
+              <div>
+                <FormBtn
+                  disabled={
+                    !this.state.source
+                    || !this.state.day
+                    || !this.state.amount
+                  }
+                  onClick={this.handleTransaction}
+                  value="submit"
+                />
+              </div>
+
             </div>
           </div>
-        </div>
-      </React.Fragment>
+
+          <div className="savings-trans-container">
+            <h6>Savings Transfer for {month} {year}</h6>
+            <div className="savings-trans-inner">
+
+              <div>
+                <Label name="savings-source">Select an account:</Label>
+                <Select id="savings-source" name="savingsSource" onChange={this.handleInputChange}>
+                  <Option></Option>
+                  {Object.keys(accountNames)
+                    .filter(key => (
+                      this.props.accountNames[key] != undefined
+                      && `${key}`.includes('saving')
+                    ))
+                    .map((key, index) => <Option key={`${key}-${index}`} value={`${key}`}>{accountNames[key]}</Option>)}
+                </Select>
+              </div>
+
+              <div>
+                <Input
+                  value={this.state.savingsAmount}
+                  onChange={this.handleInputChange}
+                  name="savingsAmount"
+                  type="text"
+                  label="Enter amount:"
+                />
+              </div>
+
+              <div>
+                <FormBtn
+                  disabled={!this.state.savingsSource}
+                  onClick={this.savingsToChecking}
+                  value="submit"
+                />
+              </div>
+
+            </div>
+          </div>
+        </Inner>
+      </Outer>
     )
   }
 }

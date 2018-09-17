@@ -1,35 +1,7 @@
 import axios from "axios";
 
 export const API = {
-
-  // IMAGE UPLOADING & DOWNLOADING ROUTES
-  //  IMAGE ROUTES FOR RENTALS
-  // Gets image names from the database so they can be inserted into img tags
-  getImageNames: function (id) {
-    return axios.get(`/file/image/names/${id}`);
-  },
-
-  //  Uploads images to the database and associates them to a rental
-  uploadImage: function (rentalId, imageData) {
-    return axios.post(`/file/image/${rentalId}`, imageData);
-  },
-
-  // This route is embedded in the img tags as part of the filepath.
-  // The filepath calls the route
-  getImage: function () {
-    return axios.get('/file/image/:filename');
-  },
-
-  //  Deletes an image and removes the association in the rental
-  deleteImage: function (imageId, rentalId) {
-    return axios.delete(`/file/image/${imageId}/${rentalId}`);
-  },
-
   // USER AUTHENTICATION ROUTES
-  // Get user info
-  getUser: function () {
-    return axios.get('/user');
-  },
   // New user signup
   signup: function (signupData) {
     return axios.post('/user', signupData);

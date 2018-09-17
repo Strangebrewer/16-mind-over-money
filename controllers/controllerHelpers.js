@@ -50,12 +50,15 @@ module.exports = {
     }
     let query;
 
-    if (req.body.source === 'cc1') query = db.CC1.create(ccObject);
-    if (req.body.source === 'cc2') query = db.CC2.create(ccObject);
-    if (req.body.source === 'cc3') query = db.CC3.create(ccObject);
-    if (req.body.source === 'cc4') query = db.CC4.create(ccObject);
-    if (req.body.source === 'cc5') query = db.CC5.create(ccObject);
-    if (req.body.source === 'cc6') query = db.CC6.create(ccObject);
+    switch (req.body.source) {
+      case 'cc1': query = db.CC1.create(ccObject); break;
+      case 'cc2': query = db.CC2.create(ccObject); break;
+      case 'cc3': query = db.CC3.create(ccObject); break;
+      case 'cc4': query = db.CC4.create(ccObject); break;
+      case 'cc5': query = db.CC5.create(ccObject); break;
+      case 'cc6': query = db.CC6.create(ccObject); break;
+      default: console.log("No source match found.");
+    }
 
     query
       .then(charge => console.log(charge))
@@ -75,11 +78,14 @@ module.exports = {
     let query;
 
     if (req.body.category) {
-      if (req.body.category === 'detail1') query = db.Detail1.create(detailObject);
-      if (req.body.category === 'detail2') query = db.Detail2.create(detailObject);
-      if (req.body.category === 'detail3') query = db.Detail3.create(detailObject);
-      if (req.body.category === 'detail4') query = db.Detail4.create(detailObject);
-      if (req.body.category === 'detail5') query = db.Detail5.create(detailObject);
+      switch (req.body.category) {
+        case 'detail1': query = db.Detail1.create(detailObject); break;
+        case 'detail2': query = db.Detail2.create(detailObject); break;
+        case 'detail3': query = db.Detail3.create(detailObject); break;
+        case 'detail4': query = db.Detail4.create(detailObject); break;
+        case 'detail5': query = db.Detail5.create(detailObject); break;
+        default: console.log("No category match found.");
+      }
 
       query
         .then(detail => console.log(detail))
@@ -196,11 +202,14 @@ module.exports = {
       }
 
       let detailQuery;
-      if (category === 'detail1') detailQuery = db.Detail1.destroy(detailDestroy);
-      if (category === 'detail2') detailQuery = db.Detail2.destroy(detailDestroy);
-      if (category === 'detail3') detailQuery = db.Detail3.destroy(detailDestroy);
-      if (category === 'detail4') detailQuery = db.Detail4.destroy(detailDestroy);
-      if (category === 'detail5') detailQuery = db.Detail5.destroy(detailDestroy);
+      switch (category) {
+        case 'detail1': detailQuery = db.Detail1.destroy(detailDestroy); break;
+        case 'detail2': detailQuery = db.Detail2.destroy(detailDestroy); break;
+        case 'detail3': detailQuery = db.Detail3.destroy(detailDestroy); break;
+        case 'detail4': detailQuery = db.Detail4.destroy(detailDestroy); break;
+        case 'detail5': detailQuery = db.Detail5.destroy(detailDestroy); break;
+        default: console.log("No category match found.");
+      }
 
       detailQuery
         .then(result => console.log(result))
@@ -223,13 +232,16 @@ module.exports = {
     };
 
     let query;
-    if (source === 'checking') query = db.Checking.update({ category: null }, whereAnd);
-    if (source === 'cc1') query = db.CC1.update({ category: null }, whereAnd);
-    if (source === 'cc2') query = db.CC2.update({ category: null }, whereAnd);
-    if (source === 'cc3') query = db.CC3.update({ category: null }, whereAnd);
-    if (source === 'cc4') query = db.CC4.update({ category: null }, whereAnd);
-    if (source === 'cc5') query = db.CC5.update({ category: null }, whereAnd);
-    if (source === 'cc6') query = db.CC6.update({ category: null }, whereAnd);
+    switch (source) {
+      case 'checking': query = db.Checking.update({ category: null }, whereAnd); break;
+      case 'cc1': query = db.CC1.update({ category: null }, whereAnd); break;
+      case 'cc2': query = db.CC2.update({ category: null }, whereAnd); break;
+      case 'cc3': query = db.CC3.update({ category: null }, whereAnd); break;
+      case 'cc4': query = db.CC4.update({ category: null }, whereAnd); break;
+      case 'cc5': query = db.CC5.update({ category: null }, whereAnd); break;
+      case 'cc6': query = db.CC6.update({ category: null }, whereAnd); break;
+      default: console.log("No source match found.");
+    }
 
     query
       .then(result => console.log(result))
@@ -260,12 +272,15 @@ module.exports = {
     if (!payment) {
       db.CCSpend.findOne(where)
         .then(record => {
-          if (card === 'cc1') calcCCSpendUpdate(record.cc1, amount, card);
-          if (card === 'cc2') calcCCSpendUpdate(record.cc2, amount, card);
-          if (card === 'cc3') calcCCSpendUpdate(record.cc3, amount, card);
-          if (card === 'cc4') calcCCSpendUpdate(record.cc4, amount, card);
-          if (card === 'cc5') calcCCSpendUpdate(record.cc5, amount, card);
-          if (card === 'cc6') calcCCSpendUpdate(record.cc6, amount, card);
+          switch (card) {
+            case 'cc1': calcCCSpendUpdate(record.cc1, amount, card); break;
+            case 'cc2': calcCCSpendUpdate(record.cc2, amount, card); break;
+            case 'cc3': calcCCSpendUpdate(record.cc3, amount, card); break;
+            case 'cc4': calcCCSpendUpdate(record.cc4, amount, card); break;
+            case 'cc5': calcCCSpendUpdate(record.cc5, amount, card); break;
+            case 'cc6': calcCCSpendUpdate(record.cc6, amount, card); break;
+            default: console.log("No card match found.");
+          }
         })
     }
 
@@ -277,12 +292,15 @@ module.exports = {
         let ccBalance;
         let updateObj = {};
 
-        if (card === 'cc1') ccBalance = parseFloat(balance.cc1).toFixed(2).toString();
-        if (card === 'cc2') ccBalance = parseFloat(balance.cc2).toFixed(2).toString();
-        if (card === 'cc3') ccBalance = parseFloat(balance.cc3).toFixed(2).toString();
-        if (card === 'cc4') ccBalance = parseFloat(balance.cc4).toFixed(2).toString();
-        if (card === 'cc5') ccBalance = parseFloat(balance.cc5).toFixed(2).toString();
-        if (card === 'cc6') ccBalance = parseFloat(balance.cc6).toFixed(2).toString();
+        switch (card) {
+          case 'cc1': ccBalance = parseFloat(balance.cc1).toFixed(2).toString(); break;
+          case 'cc2': ccBalance = parseFloat(balance.cc2).toFixed(2).toString(); break;
+          case 'cc3': ccBalance = parseFloat(balance.cc3).toFixed(2).toString(); break;
+          case 'cc4': ccBalance = parseFloat(balance.cc4).toFixed(2).toString(); break;
+          case 'cc5': ccBalance = parseFloat(balance.cc5).toFixed(2).toString(); break;
+          case 'cc6': ccBalance = parseFloat(balance.cc6).toFixed(2).toString(); break;
+          default: console.log("No card match found.");
+        }
 
         //  If the CC Record is a payment, it has to be added back to both the checking
         //   and the CC balances.

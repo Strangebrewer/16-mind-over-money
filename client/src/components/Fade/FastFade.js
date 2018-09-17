@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import "./Fade.css";
 
@@ -11,9 +11,9 @@ export const FastFade = props => (
     transitionLeaveTimeout={500}
   >
     {props.array.map((item, i) => (
-      <React.Fragment key={i}>
+      <Fragment key={i}>
         {item}
-      </React.Fragment>
+      </Fragment>
     ))}
   </CSSTransitionGroup>
 );

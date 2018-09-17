@@ -1,68 +1,26 @@
 .cc-payments-container {
-  background-color: #fff;
-  /* margin: 20px 0; */
-  padding: 20px;
-  width: 300px;
-  border: 1px solid #bdbdbd;
-  border-radius: 20px;
-  box-shadow: inset 0 0 20px 1px #888;
+  margin: 0;
 }
 
-.cc-payments-container h2 {
-  text-align: center;
-  font-weight: bold;
-  font-size: 22px;
+@media (min-width: 677px) {
+  .cc-payments-container {
+    width: 640px;
+  }
+  .cc-payments-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .cc-payments-inner > div {
+    width: 48%;
+  }
+  .cc-payments-inner > div:last-child {
+    width: 100%;
+  }
 }
 
-.cc-payments-container h6 {
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.cc-payments-inner {
-  font-size: .85rem;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.cc-payments-container input {
-  width: 100%;
-  background-color: #ececec;
-  outline: none;
-  border: none;
-  border: 1px solid #0066ff;
-  font-size: 14px;
-  padding: 0 10px;
-  line-height: 25px;
-  border-radius: 4px;
-  margin: 2px 0 10px 0;
-}
-
-.cc-payments-container p {
-  color: #555;
-  padding: 4px 10px 0 10px;
-  font-size: .85rem;
-}
-
-.cc-payments-container p span {
-  float: right;
-  color: #000;
-  font-weight: bold;
-}
-
-.cc-payments-container button {
-  display: block;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  color: #fff;
-  background-color: #0066ffa1;
-  border-radius: 5px;
-  margin: auto;
-  padding: 3px 15px;
-  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
-  border: 1px solid #000;
-}
-
-.cc-payments-container button:hover {
-  background-color: #0066ff;
+@media (min-width: 1050px) {
+  .cc-payments-container {
+    float: right;
+  }
 }

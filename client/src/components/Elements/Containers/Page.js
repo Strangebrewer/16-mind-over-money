@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { FastFade } from "../../Fade";
 import { Navbar } from "../Navbar";
 import { Footer } from "../Footer";
-import Title from "../Title";
-import "./PageContainer.css";
+import { Title } from "../Title";
+import "./Container.css";
 
-export const PageContainer = props => (
-  < React.Fragment >
+export const Page = props => (
+  <Fragment>
     <div className="sticky-footer-container">
       <div className="sticky-footer-inner">
         {props.location.state
@@ -31,5 +31,5 @@ export const PageContainer = props => (
       </div>
       <Footer />
     </div>
-  </React.Fragment >
+  </Fragment>
 );

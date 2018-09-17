@@ -10,10 +10,10 @@ export const Tables = {
         accessor: "addDate",
         maxWidth: 80,
         Cell: row => {
-          if (dateFns.format(row.value * 1000, "MMM YYYY") === "Invalid Date")
+          if (dateFns.format(row.value, 'MMM YYYY') === "Invalid Date")
             return "Averages"
           else
-            return dateFns.format(row.value * 1000, "MMM YYYY")
+            return dateFns.format(row.value, "MMM YYYY")
         }
       }
     ];

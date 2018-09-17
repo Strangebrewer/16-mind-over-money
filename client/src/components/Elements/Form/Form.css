@@ -1,28 +1,47 @@
+button.form-btn {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  background-color: #0066ffa1;
+  border-radius: 5px;
+  margin: auto;
+  padding: 3px 15px;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+  border: 1px solid #000;
+}
+
+button.form-btn:hover {
+  background-color: #0066ff;
+}
+
+select, input {
+  width: 100%;
+  background-color: #ececec;
+  outline: none;
+  border: none;
+  border: 1px solid #0066ff;
+  font-size: 14px;
+  padding: 0 10px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+input {
+  margin: 2px 0 10px 0;
+}
+
+select {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin: 2px 0;
+}
+
 .input-tooltip {
   visibility: hidden;
   position: absolute;
   top: 0;
   left: 100px;
-}
-
-.names-div {
-  /* position: relative; */
-}
-
-.names-div span {
-  /* color: #111;
-  background: #e4e4e4;
-  border: 1px solid var(--inputBorder);
-  border-radius: 10px;
-  padding: 5px;
-  box-shadow: 0 0 1px #000,
-  0 0 2px #000,
-  0 0 3px #fff,
-   0 0 4px #fff,
-  0 0 5px #fff,
-  0 0 10px #fff,
-  0 0 20px #fff;
-  z-index: 99; */
 }
 
 .checking-names-div:hover .checking-input-tooltip {

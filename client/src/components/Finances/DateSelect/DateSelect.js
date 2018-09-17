@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
+import { Outer } from "../../Elements/Containers";
+import { FormBtn } from "../../Elements/Form";
 import "./DateSelect.css";
 
-class DateSelect extends Component {
+class DateSelect extends React.Component {
   state = {
     month: "",
     year: ""
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({
       month: this.props.month,
       year: this.props.year
@@ -26,7 +28,7 @@ class DateSelect extends Component {
     const { month, year } = this.state;
 
     return (
-      <div className="date-select">
+      <Outer addedClass="date-select">
         <div className="month-select">
           <select name="month" onChange={this.handleInputChange}>
             <option>{this.state.month.toUpperCase()}</option>
@@ -60,9 +62,12 @@ class DateSelect extends Component {
           </select>
         </div>
         <div className="date-select-btn">
-          <button onClick={() => this.props.handleDateChange(month, year)}>Go!</button>
+          <FormBtn
+            onClick={() => this.props.handleDateChange(month, year)}
+            value="Go!"
+          />
         </div>
-      </div>
+      </Outer>
     )
   }
 };

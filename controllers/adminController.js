@@ -17,13 +17,18 @@ module.exports = {
   getCcRecords: function (req, res) {
     const card = req.params.card;
     let query;
-    if (card === 'cc1') query = db.CC1.findAll({ where: { UserId: req.user.id } });
-    if (card === 'cc2') query = db.CC2.findAll({ where: { UserId: req.user.id } });
-    if (card === 'cc3') query = db.CC3.findAll({ where: { UserId: req.user.id } });
-    if (card === 'cc4') query = db.CC4.findAll({ where: { UserId: req.user.id } });
-    if (card === 'cc5') query = db.CC5.findAll({ where: { UserId: req.user.id } });
-    if (card === 'cc6') query = db.CC6.findAll({ where: { UserId: req.user.id } });
-    if (card === 'all') query = db.CCSpend.findAll({ where: { UserId: req.user.id } });
+
+    switch (card) {
+      case 'cc1': query = db.CC1.findAll({ where: { UserId: req.user.id } }); break;
+      case 'cc2': query = db.CC2.findAll({ where: { UserId: req.user.id } }); break;
+      case 'cc3': query = db.CC3.findAll({ where: { UserId: req.user.id } }); break;
+      case 'cc4': query = db.CC4.findAll({ where: { UserId: req.user.id } }); break;
+      case 'cc5': query = db.CC5.findAll({ where: { UserId: req.user.id } }); break;
+      case 'cc6': query = db.CC6.findAll({ where: { UserId: req.user.id } }); break;
+      case 'all': query = db.CCSpend.findAll({ where: { UserId: req.user.id } }); break;
+      default: console.log("No card match found.");
+    }
+
     query
       .then(records => res.json(records))
       .catch(err => res.send(err));
@@ -38,11 +43,14 @@ module.exports = {
   getDetailRecords: function (req, res) {
     const category = req.params.category;
     let query;
-    if (category === 'detail1') query = db.Detail1.findAll({ where: { UserId: req.user.id } });
-    if (category === 'detail2') query = db.Detail2.findAll({ where: { UserId: req.user.id } });
-    if (category === 'detail3') query = db.Detail3.findAll({ where: { UserId: req.user.id } });
-    if (category === 'detail4') query = db.Detail4.findAll({ where: { UserId: req.user.id } });
-    if (category === 'detail5') query = db.Detail5.findAll({ where: { UserId: req.user.id } });
+    switch (category) {
+      case 'detail1': query = db.Detail1.findAll({ where: { UserId: req.user.id } }); break;
+      case 'detail2': query = db.Detail2.findAll({ where: { UserId: req.user.id } }); break;
+      case 'detail3': query = db.Detail3.findAll({ where: { UserId: req.user.id } }); break;
+      case 'detail4': query = db.Detail4.findAll({ where: { UserId: req.user.id } }); break;
+      case 'detail5': query = db.Detail5.findAll({ where: { UserId: req.user.id } }); break;
+      default: console.log("No category match found.");
+    }
     query
       .then(records => res.json(records))
       .catch(err => res.send(err));
@@ -88,19 +96,25 @@ module.exports = {
       }
     }
 
-    if (source === 'checking') promiseArray.push(db.Checking.update(note, sourceWhere));
-    if (source === 'cc1') promiseArray.push(db.CC1.update(note, sourceWhere));
-    if (source === 'cc2') promiseArray.push(db.CC2.update(note, sourceWhere));
-    if (source === 'cc3') promiseArray.push(db.CC3.update(note, sourceWhere));
-    if (source === 'cc4') promiseArray.push(db.CC4.update(note, sourceWhere));
-    if (source === 'cc5') promiseArray.push(db.CC5.update(note, sourceWhere));
-    if (source === 'cc6') promiseArray.push(db.CC6.update(note, sourceWhere));
-    if (category === 'detail1') promiseArray.push(db.Detail1.update(note, categoryWhere));
-    if (category === 'detail2') promiseArray.push(db.Detail2.update(note, categoryWhere));
-    if (category === 'detail3') promiseArray.push(db.Detail3.update(note, categoryWhere));
-    if (category === 'detail4') promiseArray.push(db.Detail4.update(note, categoryWhere));
-    if (category === 'detail5') promiseArray.push(db.Detail5.update(note, categoryWhere));
-    
+    switch (source) {
+      case 'checking': promiseArray.push(db.Checking.update(note, sourceWhere)); break;
+      case 'cc1': promiseArray.push(db.CC1.update(note, sourceWhere)); break;
+      case 'cc2': promiseArray.push(db.CC2.update(note, sourceWhere)); break;
+      case 'cc3': promiseArray.push(db.CC3.update(note, sourceWhere)); break;
+      case 'cc4': promiseArray.push(db.CC4.update(note, sourceWhere)); break;
+      case 'cc5': promiseArray.push(db.CC5.update(note, sourceWhere)); break;
+      case 'cc6': promiseArray.push(db.CC6.update(note, sourceWhere)); break;
+      default: console.log("No source match found.");
+    }
+    switch (category) {
+      case 'detail1': promiseArray.push(db.Detail1.update(note, categoryWhere)); break;
+      case 'detail2': promiseArray.push(db.Detail2.update(note, categoryWhere)); break;
+      case 'detail3': promiseArray.push(db.Detail3.update(note, categoryWhere)); break;
+      case 'detail4': promiseArray.push(db.Detail4.update(note, categoryWhere)); break;
+      case 'detail5': promiseArray.push(db.Detail5.update(note, categoryWhere)); break;
+      default: console.log("No category match found.");
+    }
+
     Promise.all(promiseArray)
       .then(result => res.json(result))
       .catch(err => res.send(err));
@@ -118,18 +132,24 @@ module.exports = {
       }
     };
 
-    if (detail === 'detail1') promiseArray.push(db.Detail1.update(note, detailWhere));
-    if (detail === 'detail1') promiseArray.push(db.Detail1.update(note, detailWhere));
-    if (detail === 'detail3') promiseArray.push(db.Detail3.update(note, detailWhere));
-    if (detail === 'detail4') promiseArray.push(db.Detail4.update(note, detailWhere));
-    if (detail === 'detail5') promiseArray.push(db.Detail5.update(note, detailWhere));
-    if (source === 'checking') promiseArray.push(db.Checking.update(note, sourceWhere));
-    if (source === 'cc1') promiseArray.push(db.CC1.update(note, sourceWhere));
-    if (source === 'cc2') promiseArray.push(db.CC2.update(note, sourceWhere));
-    if (source === 'cc3') promiseArray.push(db.CC3.update(note, sourceWhere));
-    if (source === 'cc4') promiseArray.push(db.CC4.update(note, sourceWhere));
-    if (source === 'cc5') promiseArray.push(db.CC5.update(note, sourceWhere));
-    if (source === 'cc6') promiseArray.push(db.CC6.update(note, sourceWhere));
+    switch (detail) {
+      case 'detail1': promiseArray.push(db.Detail1.update(note, detailWhere)); break;
+      case 'detail1': promiseArray.push(db.Detail1.update(note, detailWhere)); break;
+      case 'detail3': promiseArray.push(db.Detail3.update(note, detailWhere)); break;
+      case 'detail4': promiseArray.push(db.Detail4.update(note, detailWhere)); break;
+      case 'detail5': promiseArray.push(db.Detail5.update(note, detailWhere)); break;
+      default: console.log("No detail match found.");
+    }
+    switch (source) {
+      case 'checking': promiseArray.push(db.Checking.update(note, sourceWhere)); break;
+      case 'cc1': promiseArray.push(db.CC1.update(note, sourceWhere)); break;
+      case 'cc2': promiseArray.push(db.CC2.update(note, sourceWhere)); break;
+      case 'cc3': promiseArray.push(db.CC3.update(note, sourceWhere)); break;
+      case 'cc4': promiseArray.push(db.CC4.update(note, sourceWhere)); break;
+      case 'cc5': promiseArray.push(db.CC5.update(note, sourceWhere)); break;
+      case 'cc6': promiseArray.push(db.CC6.update(note, sourceWhere)); break;
+      default: console.log("No source match found.");
+    }
 
     Promise.all(promiseArray)
       .then(result => res.json(result))
@@ -149,11 +169,14 @@ module.exports = {
         });
     }
 
-    if (detail === 'detail1') getDetails('Detail1');
-    if (detail === 'detail2') getDetails('Detail2');
-    if (detail === 'detail3') getDetails('Detail3');
-    if (detail === 'detail4') getDetails('Detail4');
-    if (detail === 'detail5') getDetails('Detail5');
+    switch (detail) {
+      case 'detail1': getDetails('Detail1'); break;
+      case 'detail2': getDetails('Detail2'); break;
+      case 'detail3': getDetails('Detail3'); break;
+      case 'detail4': getDetails('Detail4'); break;
+      case 'detail5': getDetails('Detail5'); break;
+      default: console.log("No detail match found.");
+    }
   },
 
   deleteCheckingRecord: function (req, res) {
@@ -190,12 +213,15 @@ module.exports = {
         })
     }
 
-    if (card === 'cc1') ccDestroy('CC1');
-    if (card === 'cc2') ccDestroy('CC2');
-    if (card === 'cc3') ccDestroy('CC3');
-    if (card === 'cc4') ccDestroy('CC4');
-    if (card === 'cc5') ccDestroy('CC5');
-    if (card === 'cc6') ccDestroy('CC6');
+    switch (card) {
+      case 'cc1': ccDestroy('CC1'); break;
+      case 'cc2': ccDestroy('CC2'); break;
+      case 'cc3': ccDestroy('CC3'); break;
+      case 'cc4': ccDestroy('CC4'); break;
+      case 'cc5': ccDestroy('CC5'); break;
+      case 'cc6': ccDestroy('CC6'); break;
+      default: console.log("No card match found.");
+    }
   }
 
 }

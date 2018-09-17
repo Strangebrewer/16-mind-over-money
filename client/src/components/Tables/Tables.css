@@ -19,23 +19,40 @@
   color: #fff;
   text-shadow: 0 0 1px #000,
   0 0 2px #000;
-  background-color: #34660acc;
+  background-color: #0066ff;
 }
 
 .-headerGroups > .rt-tr > .rt-th:first-child {
-  background-color: #34660acc;
+  background-color: #0066ff;
   border-left: none;
 }
 
 /* sub-header styling */
 .-header > .rt-tr > .rt-th:first-child {
-  background: #5fbe10;
+  background: #0066ffcc;
   border-bottom: 1px solid #a3a3a3;
+}
+
+.ReactTable .-pagination .-btn {
+  background-color: #0051ffb9;
+  color: #fff;
+}
+
+.ReactTable .-pagination .-btn[disabled] {
+  background-color: #3a7dc9;
+}
+
+.ReactTable .-pagination .-btn:not([disabled]):hover {
+  background-color: #0051ff;
+}
+
+.ReactTable .-pagination .-btn[disabled]:hover {
+  background-color: #3a7dc9cc;
 }
 
 .rt-resizable-header {
   outline: transparent;
-	background-color: #5fbe10;
+	background-color: #0066ffcc;
   color: #ffffff;
   border: 1px solid #a3a3a3;
   border-top: none;
@@ -43,7 +60,7 @@
 }
 
 .rt-resizable-header:hover {
-	background-color: #5fbe10b7;
+	background-color: #0066ffb7;
 }
 
 /* remove filter searchbox above icon button column */
@@ -103,7 +120,7 @@
   font-size: .7rem;
   color: #fff;
   padding: 5px 10px;
-  background-color: #5fbe10e0;
+  background-color: #0066ffe0;
   text-align: center;
   border-radius: 5px;
   z-index: 2;

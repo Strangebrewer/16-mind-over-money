@@ -1,5 +1,6 @@
 import React from "react";
-import { Input } from "../../Elements/Form";
+import { Inner, Outer, Textbox } from "../../Elements/Containers";
+import { FormBtn, Input } from "../../Elements/Form";
 import { API } from "../../../utils";
 import { FastFade } from "../../Fade";
 import "./InitialNames.css";
@@ -40,9 +41,7 @@ class InitialNames extends React.Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   handleFormSubmit = () => {
@@ -78,7 +77,7 @@ class InitialNames extends React.Component {
     if (savings3) nameObject.savings3 = savings3;
 
     API.setAccountNames(nameObject)
-      .then(response => {
+      .then(() => {
         this.setState({
           style: {
             nameStyle: {
@@ -101,13 +100,10 @@ class InitialNames extends React.Component {
     return (
       <FastFade array={[
         <div className="initial-names-wrapper">
-          <div className="initial-names-container" style={this.state.style.nameStyle}>
-            <div>
-              <h2>ACCOUNT NAMES</h2>
-            </div>
-            <div className="initial-names-inner">
-              <div className="initial-names-instructions">
-                <h6>Instructions</h6>
+          <Outer addedClass="initial-names-container" style={this.state.style.nameStyle}>
+            <h2>ACCOUNT NAMES</h2>
+            <Inner addedClass="initial-names-inner">
+              <Textbox addedClass="initial-names-instructions">
                 <ul>
                   <li>Give names to all the accounts and expenses you want to keep track of.</li>
                   <li>If you don't want to use one, just leave it blank.</li>
@@ -115,7 +111,7 @@ class InitialNames extends React.Component {
                   <li>You can come back and change the names later.</li>
                   <li>Hover over the labels to get more info.</li>
                 </ul>
-              </div>
+              </Textbox>
               <Input
                 value={this.state.checking}
                 onChange={this.handleInputChange}
@@ -125,7 +121,6 @@ class InitialNames extends React.Component {
                 label="Checking Account:"
                 tooltip="This is where most transactions will be drawn from. Tracked in detail."
                 placeholder="ex. 'Checking'"
-
               />
               <Input
                 value={this.state.shelter}
@@ -303,7 +298,7 @@ class InitialNames extends React.Component {
                 type="text"
                 maxLength="15"
                 label="Detail 4:"
-                placeholder="ex. 'Entertainmt"
+                placeholder="ex. 'Entertainment"
               />
               <Input
                 value={this.state.detail5}
@@ -322,7 +317,7 @@ class InitialNames extends React.Component {
                 maxLength="15"
                 label="Other 1:"
                 tooltip="These are meant to cover expenses missed above, such as other utilities or a second car payment. The 'Other' category cannot be used to track another Credit Card, Savings, Checking, or Detail. It is only for labeling another expense and is not tracked in detail."
-                placeholder="ex. 'Student Loan'"
+                placeholder="ex. 'Student Loans'"
               />
               <Input
                 value={this.state.other2}
@@ -369,9 +364,9 @@ class InitialNames extends React.Component {
                 label="Savings 3:"
                 placeholder="ex. 'Vacation'"
               />
-              <button onClick={this.handleFormSubmit}>Submit</button>
-            </div>
-          </div>
+              <FormBtn onClick={this.handleFormSubmit} value="submit" />
+            </Inner>
+          </Outer>
         </div>
       ]} />
     )

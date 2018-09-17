@@ -1,27 +1,4 @@
-.transactions-container {
-  background-color: #fff;
-  margin: 20px 0 0 0;
-  padding: 20px;
-  width: 300px;
-  border: 1px solid #bdbdbd;
-  border-radius: 20px;
-  box-shadow: inset 0 0 20px 1px #888;
-}
-
-.transactions-container h2 {
-  text-align: center;
-  font-weight: bold;
-  font-size: 22px;
-}
-
-.transactions-inner {
-  font-size: .85rem;
-  padding: 10px;
-  border-radius: 4px;
-}
-
 .transactions-container h6 {
-  font-weight: bold;
   font-size: 16px;
 }
 
@@ -29,68 +6,74 @@
   margin-top: 20px;
 }
 
-.transactions-container label {
-  color: #555;
-  padding-left: 10px;
+@media (min-width: 677px) {
+  .transactions-container {
+    width: 640px;
+  }
+  .charge-inner,
+  .savings-trans-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .charge-inner > div:first-child,
+  .charge-inner > div:nth-child(2),
+  .charge-inner > div:nth-child(3),
+  .charge-inner > div:nth-child(4) {
+    width: 24%;
+  }
+  .charge-inner > div:nth-child(5),
+  .charge-inner > div:last-child {
+    width: 100%;
+  }
+  .charge-inner > div:last-child {
+    margin-bottom: 10px;
+  }
+  .savings-trans-inner > div:first-child,
+  .savings-trans-inner > div:nth-child(2) {
+    width: 49.35%;
+  }
+  .savings-trans-inner > div:last-child {
+    width: 100%;
+  }
 }
 
-.transactions-container select,
-.transactions-container input {
-  width: 100%;
-  background-color: #ececec;
-  outline: none;
-  border: none;
-  border: 1px solid #0066ff;
-  font-size: 14px;
-  padding: 0 10px;
-  line-height: 25px;
-  border-radius: 4px;
-  margin: 2px 0 10px 0;
-}
-
-.transactions-container select {
-  padding-top: 4px;
-  padding-bottom: 3px;
-}
-
-.transactions-container button {
-  display: block;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  color: #fff;
-  background-color: #0066ffa1;
-  border-radius: 5px;
-  margin: auto;
-  padding: 3px 15px;
-  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
-  border: 1px solid #000;
-}
-
-.transactions-container button:hover {
-  background-color: #0066ff;
-  cursor: pointer;
-}
-
-.transactions-inner > .savings-trans-container > .savings-trans-inner > button {
-  margin-bottom: 0;
-}
-
-.cc-trans-container button,
-.checking-trans-container button {
-  margin: 0 auto 30px auto;
-}
-
-.transactions-container .checkbox-div {
-  margin-top: -3px;
-}
-
-.transactions-container > .transactions-inner > .charge-form > .charge-inner > .checkbox-div > label {
-  width: 70%;
-  vertical-align: top;
-}
-
-.transactions-container #income-checkbox {
-  width: unset;
-  margin-left: 20px;
-  margin-top: 1px;
+@media (min-width: 1050px) {
+  .transactions-container {
+    float: right;
+  }
+  .savings-trans-inner {
+    justify-content: unset;
+  }
+  .transactions-container {
+    width: 960px;
+    margin: 20px 0 0 0;
+  }
+  .transactions-container h6 {
+    margin: 4px 0;
+  }
+  .charge-inner > div:first-child,
+  .charge-inner > div:nth-child(2),
+  .charge-inner > div:nth-child(3),
+  .charge-inner > div:nth-child(4),
+  .charge-inner > div:nth-child(5) {
+    width: 17%;
+  }
+  .charge-inner > div:last-child {
+    width: 10%;
+    margin-top: 15px;
+  }  
+  .savings-trans-inner > div:first-child,
+  .savings-trans-inner > div:nth-child(2) {
+    width: 17%;
+    margin-right: 9px;
+  }
+  .savings-trans-inner > div:last-child {
+    width: 10%;
+    margin-top: 15px;
+    margin-left: unset;
+  }
+  .savings-trans-inner button {
+    margin-left: unset;
+  }
 }

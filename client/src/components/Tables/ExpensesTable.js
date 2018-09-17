@@ -5,9 +5,9 @@ import LoadingModal from "../../components/Elements/LoadingModal";
 import ReactTable from "react-table";
 import dateFns from "date-fns";
 import "react-table/react-table.css";
-import "./AdminTables.css";
+import "./Tables.css";
 
-export class CCSpendTable extends Component {
+export class ExpensesTable extends Component {
   state = {
     modal: {
       isOpen: false,
@@ -15,17 +15,30 @@ export class CCSpendTable extends Component {
       buttons: ""
     },
     names: [],
-    ccSpend: []
+    expenses: []
   };
 
   componentDidMount() {
-    this.getCCSpend();
+    this.getAllExpenses();
+  }
+
+  getAllExpenses = () => {
+    API.getAllExpenses()
+      .then(res => {
+        const names = Tables.processColumns(res.data, this.props.expenseType);
+        const expPlusAvg = Tables.processAverages(res.data, res.data.Expenses);
+        res.data.Expenses.forEach(element => {
+          element.addDate = dateFns.format(`${element.month} 01, ${element.year}`, 'YYYY-MM-DD')
+        })
+        this.setState({
+          names: names,
+          expenses: expPlusAvg
+        })
+      })
   }
 
   closeModal = () => {
-    this.setState({
-      modal: { isOpen: false }
-    });
+    this.setState({ modal: { isOpen: false } });
   };
 
   setModal = (modalInput) => {
@@ -48,26 +61,8 @@ export class CCSpendTable extends Component {
   // Standard input change controller
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
-
-  getCCSpend = () => {
-    API.getCCSpend()
-      .then(res => {
-        console.log(res);
-        const names = Tables.processColumns(this.props.accounts, this.props.expenseType);
-        const spendPlusAvg = Tables.processAverages(this.props.accounts, res.data);
-        res.data.forEach(element => {
-          element.addDate = dateFns.format(`${element.month} ${element.year}`, 'X');
-        });
-        this.setState({
-          names: names,
-          ccSpend: spendPlusAvg
-        })
-      })
-  }
 
   render() {
     return (
@@ -81,21 +76,18 @@ export class CCSpendTable extends Component {
         <LoadingModal show={this.state.loadingModalOpen} />
 
         <div className="main-table-container">
-          <ReactTable
-            data={this.state.ccSpend}
-            filterable
-            columns={this.state.names}
-            defaultSorted={[
-              {
-                id: "addDate",
-                asc: true
-              }
-            ]}
-            defaultPageSize={5}
-            className="-striped -highlight"
-          />
+          {this.state.expenses.length > 0
+            ? <ReactTable
+              data={this.state.expenses}
+              filterable
+              columns={this.state.names}
+              defaultSorted={[{ id: "addDate", asc: true }]}
+              defaultPageSize={5}
+              className="-striped -highlight"
+            />
+            : null}
         </div>
       </Fragment>
     )
   }
-}
+};

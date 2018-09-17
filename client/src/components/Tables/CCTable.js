@@ -1,13 +1,14 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { API } from "../../utils";
+import { Textarea } from "../Elements/Form";
 import Modal from "../../components/Elements/Modal";
 import LoadingModal from "../../components/Elements/LoadingModal";
 import ReactTable from "react-table";
 import dateFns from "date-fns";
 import "react-table/react-table.css";
-import "./AdminTables.css";
+import "./Tables.css";
 
-export class CCTable extends Component {
+export class CCTable extends React.Component {
   state = {
     modal: {
       isOpen: false,
@@ -23,9 +24,7 @@ export class CCTable extends Component {
   }
 
   closeModal = () => {
-    this.setState({
-      modal: { isOpen: false }
-    });
+    this.setState({ modal: { isOpen: false } });
   };
 
   setModal = (modalInput) => {
@@ -48,20 +47,16 @@ export class CCTable extends Component {
   // Standard input change controller
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   getCCRecords = (card) => {
     API.getCcRecords(card)
       .then(res => {
         res.data.forEach(rec => {
-          rec.date = parseInt(dateFns.format(`${rec.month} ${rec.day}, ${rec.year}`, 'X'));
+          rec.date = dateFns.format(`${rec.month} ${rec.day}, ${rec.year}`, 'YYYY-MM-DD');
         });
-        this.setState({
-          ccRecords: res.data
-        })
+        this.setState({ ccRecords: res.data })
       })
   }
 
@@ -70,11 +65,9 @@ export class CCTable extends Component {
     API.deleteCcRecord(row)
       .then(res => {
         res.data.forEach(rec => {
-          rec.date = parseInt(dateFns.format(`${rec.month} ${rec.day}, ${rec.year}`, 'X'));
+          rec.date = dateFns.format(`${rec.month} ${rec.day}, ${rec.year}`, 'YYYY-MM-DD');
         });
-        this.setState({
-          ccRecords: res.data
-        });
+        this.setState({ ccRecords: res.data });
       }).catch(err => console.log(err));
   }
 
@@ -83,7 +76,7 @@ export class CCTable extends Component {
     this.setModal({
       body:
         <Fragment>
-          <textarea name="note" onChange={this.handleInputChange} rows="10" cols="80" defaultValue={note}></textarea>
+          <Textarea name="note" onChange={this.handleInputChange} rows="10" cols="80" defaultValue={note}></Textarea>
         </Fragment>,
       buttons:
         <Fragment>
@@ -153,23 +146,20 @@ export class CCTable extends Component {
                   },
                   {
                     Header: "Date",
-                    accessor: "date",
-                    Cell: row => {
-                      console.log(row);
-                      // row.id = row.date;
-                      return dateFns.format(row.value * 1000, "MMM Do YYYY");
-                    }
+                    accessor: "date"
                   },
                   {
                     Header: "Category",
                     accessor: "category",
                     Cell: row => {
-                      if (row.value === "detail1") return this.props.accounts.detail1;
-                      if (row.value === "detail2") return this.props.accounts.detail2;
-                      if (row.value === "detail3") return this.props.accounts.detail3;
-                      if (row.value === "detail4") return this.props.accounts.detail4;
-                      if (row.value === "detail5") return this.props.accounts.detail5;
-                      if (row.value === "deleted") return "deleted";
+                      switch (row.value) {
+                        case "detail1": return row.value = this.props.accounts.detail1; break;
+                        case "detail2": return row.value = this.props.accounts.detail2; break;
+                        case "detail3": return row.value = this.props.accounts.detail3; break;
+                        case "detail4": return row.value = this.props.accounts.detail4; break;
+                        case "detail5": return row.value = this.props.accounts.detail5; break;
+                        default: return null;
+                      }
                     }
                   },
                   {
@@ -194,12 +184,7 @@ export class CCTable extends Component {
                 ]
               }
             ]}
-            defaultSorted={[
-              {
-                id: "date",
-                asc: true
-              }
-            ]}
+            defaultSorted={[{ id: "date", asc: true }]}
             defaultPageSize={5}
             className="-striped -highlight"
           />

@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { API } from "../../utils";
+import { Textarea } from "../Elements/Form";
 import Modal from "../../components/Elements/Modal";
 import LoadingModal from "../../components/Elements/LoadingModal";
 import ReactTable from "react-table";
 import dateFns from "date-fns";
 import "react-table/react-table.css";
-import "./AdminTables.css";
+import "./Tables.css";
 
 export class DetailTable extends Component {
   state = {
@@ -22,9 +23,7 @@ export class DetailTable extends Component {
   }
 
   closeModal = () => {
-    this.setState({
-      modal: { isOpen: false }
-    });
+    this.setState({ modal: { isOpen: false } });
   };
 
   setModal = (modalInput) => {
@@ -47,20 +46,16 @@ export class DetailTable extends Component {
   // Standard input change controller
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   getDetailRecords = category => {
     API.getDetailRecords(category)
       .then(res => {
         res.data.forEach(rec => {
-          rec.date = parseInt(dateFns.format(`${rec.month} ${rec.day}, ${rec.year}`, 'X'));
+          rec.date = dateFns.format(`${rec.month} ${rec.day}, ${rec.year}`, 'YYYY-MM-DD');
         });
-        this.setState({
-          detailRecords: res.data
-        })
+        this.setState({ detailRecords: res.data })
       })
   }
 
@@ -69,11 +64,9 @@ export class DetailTable extends Component {
     API.deleteDetailRecord(row)
       .then(res => {
         res.data.forEach(rec => {
-          rec.date = parseInt(dateFns.format(`${rec.month} ${rec.day}, ${rec.year}`, 'X'));
+          rec.date = dateFns.format(`${rec.month} ${rec.day}, ${rec.year}`, 'YYYY-MM-DD');
         });
-        this.setState({
-          detailRecords: res.data
-        });
+        this.setState({ detailRecords: res.data });
       }).catch(err => console.log(err));
 
   }
@@ -82,7 +75,7 @@ export class DetailTable extends Component {
     this.setModal({
       body:
         <Fragment>
-          <textarea name="note" onChange={this.handleInputChange} rows="10" cols="80" defaultValue={row.note}></textarea>
+          <Textarea name="note" onChange={this.handleInputChange} rows="10" cols="80" defaultValue={row.note}></Textarea>
         </Fragment>,
       buttons:
         <Fragment>
@@ -152,10 +145,7 @@ export class DetailTable extends Component {
                   },
                   {
                     Header: "Date",
-                    accessor: "date",
-                    Cell: row => {
-                      return dateFns.format(row.value * 1000, "MMM Do YYYY");
-                    }
+                    accessor: "date"
                   },
                   {
                     Header: "Amount",
@@ -184,10 +174,7 @@ export class DetailTable extends Component {
                           return this.props.accounts.cc6;
                         case 'checking':
                           return this.props.accounts.checking;
-                        case 'deleted':
-                          return 'deleted';
-                        default:
-                          return "Unknown";
+                        default: return null;
                       }
                     }
                   },

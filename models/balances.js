@@ -109,23 +109,25 @@ module.exports = function (sequelize, DataTypes) {
       return money.subtract(current, adjustment);
     }
 
-    
     const adjustFunction = function (thisThing, objectKey, amt) {
       const current = parseFloat(thisThing).toFixed(2).toString();
       const adjustment = parseFloat(amt).toFixed(2).toString();
       updateObject[objectKey] = op(current, adjustment);
     }
 
-    if (category === "checking") adjustFunction(this.checking, 'checking', amount);
-    if (category === "cc1") adjustFunction(this.cc1, 'cc1', amount);
-    if (category === "cc2") adjustFunction(this.cc2, 'cc2', amount);
-    if (category === "cc3") adjustFunction(this.cc3, 'cc3', amount);
-    if (category === "cc4") adjustFunction(this.cc4, 'cc4', amount);
-    if (category === "cc5") adjustFunction(this.cc5, 'cc5', amount);
-    if (category === "cc6") adjustFunction(this.cc6, 'cc6', amount);
-    if (category === "savings1") adjustFunction(this.savings1, 'savings1', amount);
-    if (category === "savings2") adjustFunction(this.savings2, 'savings2', amount);
-    if (category === "savings3") adjustFunction(this.savings3, 'savings3', amount);
+    switch (category) {
+      case "checking": adjustFunction(this.checking, 'checking', amount); break;
+      case "cc1": adjustFunction(this.cc1, 'cc1', amount); break;
+      case "cc2": adjustFunction(this.cc2, 'cc2', amount); break;
+      case "cc3": adjustFunction(this.cc3, 'cc3', amount); break;
+      case "cc4": adjustFunction(this.cc4, 'cc4', amount); break;
+      case "cc5": adjustFunction(this.cc5, 'cc5', amount); break;
+      case "cc6": adjustFunction(this.cc6, 'cc6', amount); break;
+      case "savings1": adjustFunction(this.savings1, 'savings1', amount); break;
+      case "savings2": adjustFunction(this.savings2, 'savings2', amount); break;
+      case "savings3": adjustFunction(this.savings3, 'savings3', amount); break;
+      default: console.log("No category match found.");
+    }
 
     return updateObject;
   }

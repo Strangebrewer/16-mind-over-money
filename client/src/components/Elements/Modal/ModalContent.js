@@ -10,17 +10,17 @@ class ModalContent extends Component {
 
   render() {
     return (
-      <div className="my-modal-content">
-        <div className="my-modal-header">
-          <span className="my-modal-close" onClick={this.props.closeModal}>&times;</span>
+      <div className="modal-content">
+        <div className="modal-header">
+          <span className="modal-close" onClick={this.props.closeModal}>&times;</span>
         </div>
-        <div className="my-modal-body">
+        <div className="modal-body">
           {this.props.body}
           <div className="modal-btn-div">
             {this.props.buttons}
           </div>
         </div>
-        <div className="my-modal-footer"></div>
+        <div className="modal-footer"></div>
       </div>
     )
   }

@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { Input } from "../../Elements/Form";
+import React from "react";
+import { Inner, Outer, Textbox } from "../../Elements/Containers";
+import { FormBtn, Input } from "../../Elements/Form";
 import { FastFade } from "../../Fade";
 import { API } from "../../../utils";
 import "./InitialBalances.css";
 
-class InitialBalances extends Component {
+class InitialBalances extends React.Component {
   state = {
     style: {
       balancesForm: {}
@@ -27,9 +28,7 @@ class InitialBalances extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   handleFormSubmit = () => {
@@ -61,7 +60,7 @@ class InitialBalances extends Component {
     else balanceObject.savings3 = 0.00;
 
     API.setInitialBalances(balanceObject)
-      .then(response => {
+      .then(() => {
         this.setState({
           style: {
             balancesForm: {
@@ -81,126 +80,37 @@ class InitialBalances extends Component {
   }
 
   render() {
-    const { checking, cc1, cc2, cc3, cc4, cc5, cc6, savings1, savings2, savings3 } = this.props.accounts;
+    // const { checking, cc1, cc2, cc3, cc4, cc5, cc6, savings1, savings2, savings3 } = this.props.accounts;
+    const accounts = this.props.accounts;
 
     const balanceArray = [
-      <div className="initial-balances-container" style={this.state.style.balancesForm}>
-        <div>
-          <h2>SET INITIAL BALANCES</h2>
-        </div>
-        <div className="initial-balances-instructions">
-          <ul>
-            <li>Set the current balance for each account below.</li>
-            <li>If you leave one blank, it will default to $0.00.</li>
-            <li>You can come back and adjust the balances later.</li>
-          </ul>
-        </div>
-        <div className="initial-balance-inner">
-          {checking
-            ? (
+      <Outer addedClass="initial-balances-container" style={this.state.style.balancesForm}>
+        <h2>SET INITIAL BALANCES</h2>
+        <Inner addedClass="initial-balances-inner">
+          <Textbox addedClass="initial-balances-instructions">
+            <ul>
+              <li>Set the current balance for each account below.</li>
+              <li>If you leave one blank, it will default to $0.00.</li>
+              <li>You can come back and adjust the balances later.</li>
+            </ul>
+          </Textbox>
+            {Object.keys(accounts).filter(key => (
+              `${key}`.includes('check')
+              || `${key}`.includes('cc')
+              || `${key}`.includes('sav')
+            )).map((key, index) => (
               <Input
-                value={this.state.checking}
+                key={`${key}-${index}`}
+                value={this.state[key]}
                 onChange={this.handleInputChange}
-                name="checking"
+                name={key}
                 type="text"
-                label={`${checking}:`}
+                label={`${accounts[key]}:`}
               />
-            ) : null}
-          {cc1
-            ? (
-              <Input
-                value={this.state.cc1}
-                onChange={this.handleInputChange}
-                name="cc1"
-                type="text"
-                label={`${cc1}:`}
-              />
-            ) : null}
-          {cc2
-            ? (
-              <Input
-                value={this.state.cc2}
-                onChange={this.handleInputChange}
-                name="cc2"
-                type="text"
-                label={`${cc2}:`}
-              />
-            ) : null}
-          {cc3
-            ? (
-              <Input
-                value={this.state.cc3}
-                onChange={this.handleInputChange}
-                name="cc3"
-                type="text"
-                label={`${cc3}:`}
-              />
-            ) : null}
-          {cc4
-            ? (
-              <Input
-                value={this.state.cc4}
-                onChange={this.handleInputChange}
-                name="cc4"
-                type="text"
-                label={`${cc4}:`}
-              />
-            ) : null}
-          {cc5
-            ? (
-              <Input
-                value={this.state.cc5}
-                onChange={this.handleInputChange}
-                name="cc5"
-                type="text"
-                label={`${cc5}:`}
-              />
-            ) : null}
-          {cc6
-            ? (
-              <Input
-                value={this.state.cc6}
-                onChange={this.handleInputChange}
-                name="cc6"
-                type="text"
-                label={`${cc6}:`}
-              />
-            ) : null}
-          {savings1
-            ? (
-              <Input
-                value={this.state.savings1}
-                onChange={this.handleInputChange}
-                name="savings1"
-                type="text"
-                label={`${savings1}:`}
-              />
-            ) : null}
-          {savings2
-            ? (
-              <Input
-                value={this.state.savings2}
-                onChange={this.handleInputChange}
-                name="savings2"
-                type="text"
-                label={`${savings2}:`}
-              />
-            ) : null}
-          {savings3
-            ? (
-              <Input
-                value={this.state.savings3}
-                onChange={this.handleInputChange}
-                name="savings3"
-                type="text"
-                label={`${savings3}:`}
-              />
-            ) : null}
-          <div>
-            <button onClick={this.handleFormSubmit}>Submit</button>
-          </div>
-        </div>
-      </div>
+            ))}
+            <FormBtn onClick={this.handleFormSubmit} value="submit" />
+        </Inner>
+      </Outer>
     ];
 
     return (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { PageContainer } from "../../components/Elements/PageContainer";
+import { Page } from "../../components/Elements/Containers";
 import ChangeBalances from "../../components/Forms/ChangeBalances";
 import ChangeNames from "../../components/Forms/ChangeNames";
 import ChangePwForm from "../../components/Forms/ChangePwForm";
@@ -25,13 +25,6 @@ class Manage extends Component {
     manageStyle: {},
     accounts: {},
     balances: {},
-    changeBalancesOpen: false,
-    balanceStyle: {},
-    nameAndPwOpen: false,
-    nameAndPwStyle: {},
-    changeNamesOpen: false,
-    changeNamesStyle: {},
-    namesContainerStyle: {}
   };
 
   componentDidMount() {
@@ -125,16 +118,12 @@ class Manage extends Component {
           <ChangeBalances
             accounts={accounts}
             balances={balances}
-            balanceStyle={this.state.balanceStyle}
-            toggleChangeBalances={this.toggleChangeBalances}
             getAccountNames={this.getAccountNames}
             closeModal={this.closeModal}
             setModal={this.setModal}
             toggleLoadingModal={this.toggleLoadingModal}
           />
           <ChangePwForm
-            nameAndPwStyle={this.state.nameAndPwStyle}
-            toggleNameAndPw={this.toggleNameAndPw}
             updateUser={this.props.updateUser}
             updateUserName={this.updateUserName}
             usernameChanged={this.state.usernameChanged}
@@ -145,10 +134,6 @@ class Manage extends Component {
         </div>
         <ChangeNames
           accounts={accounts}
-          manage={true}
-          changeNamesStyle={this.state.changeNamesStyle}
-          namesContainerStyle={this.state.namesContainerStyle}
-          toggleChangeNames={this.toggleChangeNames}
           getAccountNames={this.getAccountNames}
           updateUser={this.props.updateUser}
           closeModal={this.closeModal}
@@ -159,7 +144,7 @@ class Manage extends Component {
     ]
 
     return (
-      <PageContainer
+      <Page
         loggedIn={this.props.loggedIn}
         username={this.state.username
           ? this.state.username
@@ -172,7 +157,7 @@ class Manage extends Component {
         logout={this.props.logout}
       >
         <FastFade array={manageArray} />
-      </PageContainer>
+      </Page>
     )
   }
 };

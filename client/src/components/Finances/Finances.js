@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import { API, Helpers, Slider } from "../../utils";
+import React, { Fragment } from "react";
+import { API, Helpers } from "../../utils";
 import Modal from "../../components/Elements/Modal";
 import LoadingModal from "../../components/Elements/LoadingModal";
 import dateFns from "date-fns";
@@ -13,7 +13,7 @@ import { Balances } from "./Balances";
 import { FastFade } from "../Fade";
 import "./Finances.css";
 
-export class Finances extends Component {
+export class Finances extends React.Component {
   state = {
     modal: {
       isOpen: false,
@@ -34,14 +34,12 @@ export class Finances extends Component {
     year: ""
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getFinances();
   }
 
   closeModal = () => {
-    this.setState({
-      modal: { isOpen: false }
-    });
+    this.setState({ modal: { isOpen: false } });
   }
 
   setModal = (modalInput) => {
@@ -68,9 +66,9 @@ export class Finances extends Component {
       .then(res => {
 
         const income = res.data.transactions[1]
-          .filter(chk => (chk.income === true));
+          .filter(chk => chk.income === true);
         const debits = res.data.transactions[1]
-          .filter(chk => (chk.income === false));
+          .filter(chk => chk.income === false);
 
         this.setState({
           accountNames: res.data.current,
@@ -91,9 +89,7 @@ export class Finances extends Component {
   // Standard input change controller
   handleInputChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   handleDateChange = (month, year) => {
@@ -101,9 +97,9 @@ export class Finances extends Component {
       .then(res => {
 
         const income = res.data.transactions[1]
-          .filter(chk => (chk.income === true));
+          .filter(chk => chk.income === true);
         const debits = res.data.transactions[1]
-          .filter(chk => (chk.income === false));
+          .filter(chk => chk.income === false);
 
         this.setState({
           accountNames: res.data.current,
@@ -123,8 +119,7 @@ export class Finances extends Component {
   }
 
   updateExpenses = expenses => {
-    const month = this.state.month;
-    const year = this.state.year;
+    const { month, year } = this.state;
     const expenseObject = Helpers.processExpenses(expenses);
     API.updateExpenses(month, year, expenseObject)
       .then(res => {
@@ -141,9 +136,7 @@ export class Finances extends Component {
   }
 
   updateSavings = savings => {
-    //  will update db.Expenses for the month and update balances for checking and savings
-    const month = this.state.month;
-    const year = this.state.year;
+    const { month, year } = this.state;
     const savingsObject = Helpers.processSavings(savings);
 
     API.updateSavings(month, year, savingsObject)
@@ -175,8 +168,7 @@ export class Finances extends Component {
   }
 
   creditCardPayment = payment => {
-    const month = this.state.month;
-    const year = this.state.year;
+    const { month, year } = this.state;
     const paymentObject = Helpers.processCcPayment(payment);
 
     API.creditCardPayment(month, year, paymentObject)
@@ -194,8 +186,7 @@ export class Finances extends Component {
   }
 
   handleTransaction = charge => {
-    const month = this.state.month;
-    const year = this.state.year;
+    const { month, year } = this.state;
     if (charge.category === 'income') {
       charge.income = true;
       charge.category = "";
@@ -205,8 +196,8 @@ export class Finances extends Component {
       const checkingObject = Helpers.processChecking(charge);
       API.updateChecking(month, year, checkingObject)
         .then(res => {
-          const income = res.data[1].filter(chk => (chk.income === true));
-          const debits = res.data[1].filter(chk => (chk.income === false));
+          const income = res.data[1].filter(chk => chk.income === true);
+          const debits = res.data[1].filter(chk => chk.income === false);
           this.setState({
             balances: res.data[0],
             income: income,
@@ -238,6 +229,7 @@ export class Finances extends Component {
   }
 
   render() {
+    const { month, year } = this.state;
     const financesArray = [
       <Modal
         show={this.state.modal.isOpen}
@@ -247,7 +239,7 @@ export class Finances extends Component {
       />,
       <LoadingModal show={this.state.loadingModalOpen} />,
       <div className="logged-in">
-        <p className="current-date">Currently looking at <span>{this.state.month} {this.state.year}</span></p>
+        <p className="current-date">Currently looking at <span>{month} {year}</span></p>
         <DateSelect
           month={this.state.month}
           year={this.state.year}
@@ -259,18 +251,13 @@ export class Finances extends Component {
           accountNames={this.state.accountNames}
           expenses={this.state.expenses}
           updateChecking={this.updateChecking}
-          transStyle={this.state.transStyle}
-          transTopStyle={this.state.transTopStyle}
           savingsToChecking={this.savingsToChecking}
           handleTransaction={this.handleTransaction}
-          toggleTransactions={this.toggleTransactions}
         />
         <div className="left-column">
           <Balances
             accountNames={this.state.accountNames}
             balances={this.state.balances}
-            balanceStyle={this.state.balanceStyle}
-            toggleBalances={this.toggleBalances}
           />
           <ThisMonth
             accountNames={this.state.accountNames}
@@ -280,8 +267,6 @@ export class Finances extends Component {
             income={this.state.income}
             debits={this.state.debits}
             details={this.state.details}
-            monthStyle={this.state.monthStyle}
-            toggleThisMonth={this.toggleThisMonth}
           />
         </div>
         <Expenses
@@ -291,9 +276,6 @@ export class Finances extends Component {
           expenses={this.state.expenses}
           ccSpend={this.state.ccSpend}
           updateExpenses={this.updateExpenses}
-          expensesStyle={this.state.expensesStyle}
-          expensesTopStyle={this.state.expensesTopStyle}
-          toggleExpenses={this.toggleExpenses}
         />
         <Credit
           month={this.state.month}
@@ -302,19 +284,13 @@ export class Finances extends Component {
           expenses={this.state.expenses}
           ccSpend={this.state.ccSpend}
           creditCardPayment={this.creditCardPayment}
-          creditStyle={this.state.creditStyle}
-          creditTopStyle={this.state.creditTopStyle}
-          toggleCcPayments={this.toggleCcPayments}
         />
         <Savings
           month={this.state.month}
           year={this.state.year}
           accountNames={this.state.accountNames}
-          savingsStyle={this.state.savingsStyle}
-          savingsTopStyle={this.state.savingsTopStyle}
           expenses={this.state.expenses}
           updateSavings={this.updateSavings}
-          toggleSavings={this.toggleSavings}
         />
       </div>
     ]
