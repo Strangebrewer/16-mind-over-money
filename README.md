@@ -1,22 +1,20 @@
 # 16-mind-over-money
 
-issues: You can't sort by date because the actual date is a unix timestamp - it's been converted to 'MMM Do, YYYY' for display. This is on the list of needed fixes.
-
 ## Table of contents
   
 ### 1-Description
 ### 2-Technologies
-### 3-Challenges
+### 3-Challenges & Learning
 ### 4-Known Issues
-### 5-Desired Features
+### 5-Future Development
 ### 6-Contributors
 
 ### 1-Description
-This is a description of a project that I have completed that focuses on a specific technology with other supporting technologies that I have already learned. This description should give you a good idea of what the project does in plan, design and implementation. How does it help improve the user's life? What is the overall purpose of the work? If I were to leave the project today what would people need to know about the idea in order to maintain the project
+I wanted to build another large-ish (large-ish for a personal project) full-stack app to keep in practice and to see what I could learn from it. This app reproduces the functionality from an Excel spreadsheet I sometimes use to track my finances. I've sporadically developed and added to it (the spreadsheet) over the years, so there's a bit of complexity to it, which made it an interesting web development project. It tracks specific categories of spending that you designate yourself (e.g. Food, Entertainment, Car Repair, Gas); it automatically tallies the average you spend on each monthly bill (with the sheet I have to highlight what I want averaged); it compares spending to income in real money and analyzes credit card spending vs payments (and whether your pattern is accruing or decreasing debt), then displays the differences along with a brief reminder blurb of advice to emphasize (in simple, broad terms) what adjustments are would help.
 
 
 ### 2-Technologies
-  This project utilizes the following technologies:
+  This project utilizes the following:
 - HTML
 - CSS
 - Vanilla JavaScript
@@ -25,21 +23,24 @@ This is a description of a project that I have completed that focuses on a speci
 - [Express](https://expressjs.com/)
 - Cookies, Local Storage
 - [MySQL](https://www.mysql.com/)
+- [Sequelize]()
+- [React Table](https://react-table.js.org/#/story/readme)
+- [Passport.js](http://www.passportjs.org/)
+- And several other packages, such as axios, bcrypt-nodejs, date-fns, money-math, and react-currency-formatter.
 
-### 3-Challenges
-Throughout this project there was only one challenge the proved to be tricky to handle, ___________________. ________ was a new technology to take on and after spending a good amount of time in the documentation I started to grasp it. My advice would be start early. Use the links listed below to learn more about the technology and remember **you will eventually learn how everything works!**
----**Suggested Links**---
--[Link1]()
--[Link1]()
--[Link1]()
--[Link1]()
+### 3-Challenges & Learning
+There weren't too many difficulties in creating this app as it stands now. But difficulty wasn't my intention - broadening my understanding was. I just wanted to learn more depth as I went along. Things like more clarity and or subtlety in file structure and modularity, or class methods vs instance methods. In a forked copy, I refactored the app to use MySQL directly (sans Sequelize) and during the course of it learned more about promises by creating them in my models. This project added to my larger picture understanding of the MVC file structure in relation to cycle in a web app (user action > whatever client-side functionality > API call > router > controller > model > database > functionality > client-side functionality > display). I gained a greater understanding of classes, promises, closures, Object class methods, modularity, helper files, and it's given me some (as yet unimplemented) ideas for controlling user interaction flow.
 
 ### 4-Known Issues
+As far as I have been able to find, there are no bugs left. Everything is working as intended. If you find anything, feel free to submit a PR, or even just tell me. BKAShambala@gmail.com.
 
 ### 5-Future Development
-  Below is a list of possible features that we would like to add to the project. If You would like to propose a feature to add please feel free to create a PR to add it to the list. **We love it when others can help propose ideas!**
-1.  idea1
-2.  idea2
-3.  idea3
-4.  idea4
+  Some features I'd like to add once I've either used it a while and have some data to work with or I take the time to acquire/write some seed data for it.
+1.  Graphs for patterns and trends
+2.  (which means developing more detailed number-crunching functionality all around)
+3.  Use the app as a playground for learning more advanced CSS (the original version had a lot of animated buttons that expanded into each section on click. It looked cool but made the app a little more time-consuming to use.)
+4.  Incorporate a miniature version of it into my Portfolio site (maybe just the balances and transactions components)
 5.  idea5
+
+### 6- Contributors
+  Just me.
