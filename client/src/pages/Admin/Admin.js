@@ -70,7 +70,7 @@ class Admin extends Component {
       case 'cc4': this.setState({ cc4: !this.state.cc4 }); break;
       case 'cc5': this.setState({ cc5: !this.state.cc5 }); break;
       case 'cc6': this.setState({ cc6: !this.state.cc6 }); break;
-      default: ""
+      default: console.log("No CC match found.");
     }
   }
 
@@ -89,7 +89,7 @@ class Admin extends Component {
       case 'detail3': this.setState({ detail3: !this.state.detail3 }); break;
       case 'detail4': this.setState({ detail4: !this.state.detail4 }); break;
       case 'detail5': this.setState({ detail5: !this.state.detail5 }); break;
-      default: ""
+      default: console.log("No Detail match found.");
     }
   }
 
@@ -168,16 +168,7 @@ class Admin extends Component {
                     toggleOtherExpenses={this.toggleOtherExpenses}
                     toggleCcSpendTable={this.toggleCcSpendTable}
                     toggleCCTable={this.toggleCCTable}
-                    toggleCCTable={this.toggleCCTable}
-                    toggleCCTable={this.toggleCCTable}
-                    toggleCCTable={this.toggleCCTable}
-                    toggleCCTable={this.toggleCCTable}
-                    toggleCCTable={this.toggleCCTable}
                     toggleCheckingTable={this.toggleCheckingTable}
-                    toggleDetailTable={this.toggleDetailTable}
-                    toggleDetailTable={this.toggleDetailTable}
-                    toggleDetailTable={this.toggleDetailTable}
-                    toggleDetailTable={this.toggleDetailTable}
                     toggleDetailTable={this.toggleDetailTable}
                     hideAllTables={this.hideAllTables}
                   />

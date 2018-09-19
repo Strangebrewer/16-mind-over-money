@@ -27,16 +27,17 @@ class Manage extends Component {
     balances: {},
   };
 
-  // componentWillUnmount() {
-  //   if (this.state.usernameChanged) {
-  //     this.props.updateUser({
-  //       auth: true,
-  //       state: {
-  //         accounts: this.state.username
-  //       }
-  //     })
-  //   }
-  // }
+  componentWillUnmount() {
+    if (this.state.usernameChanged) {
+      console.log(this.state.accounts);
+      this.props.updateUser({
+        auth: true,
+        state: {
+          accounts: this.state.accounts
+        }
+      })
+    }
+  }
 
   componentDidMount() {
     this.getAccountNames();
@@ -100,11 +101,11 @@ class Manage extends Component {
     }, 510);
   };
 
-  updateUserName = username => {
-    console.log(username);
+  updateUserName = user => {
     this.setState({
-      username: username,
-      usernameChanged: true
+      username: user.username,
+      usernameChanged: true,
+      accounts: user
     })
   }
 

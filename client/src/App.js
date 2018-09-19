@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-d
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import Manage from "./pages/Manage";
-import NoMatch from "./pages/NoMatch";
+import { NoMatch } from "./pages/NoMatch";
 import { API, AddPropsToRoute } from "./utils";
 import "./App.css";
 

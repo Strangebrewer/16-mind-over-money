@@ -8,7 +8,7 @@ export const Balances = props => (
     <h2>BALANCES</h2>
     <Inner addedClass="balances-inner">
       {Object.keys(props.accountNames).filter(key => (
-        props.accountNames[key] != undefined
+        props.accountNames[key] !== null
         && (
           `${key}`.includes('cc')
           || `${key}`.includes('sav')

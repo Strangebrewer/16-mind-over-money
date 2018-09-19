@@ -233,14 +233,13 @@ module.exports = {
 
     let query;
     switch (source) {
-      case 'checking': query = db.Checking.update({ category: null }, whereAnd); break;
       case 'cc1': query = db.CC1.update({ category: null }, whereAnd); break;
       case 'cc2': query = db.CC2.update({ category: null }, whereAnd); break;
       case 'cc3': query = db.CC3.update({ category: null }, whereAnd); break;
       case 'cc4': query = db.CC4.update({ category: null }, whereAnd); break;
       case 'cc5': query = db.CC5.update({ category: null }, whereAnd); break;
       case 'cc6': query = db.CC6.update({ category: null }, whereAnd); break;
-      default: console.log("No source match found.");
+      default: query = db.Checking.update({ category: null }, whereAnd); break;
     }
 
     query

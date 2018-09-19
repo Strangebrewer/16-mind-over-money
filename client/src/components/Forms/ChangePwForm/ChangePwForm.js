@@ -13,17 +13,6 @@ class ChangePwForm extends React.Component {
     confirmPassword: ""
   }
 
-  componentWillUnmount() {
-    if (this.props.usernameChanged) {
-      this.props.updateUser({
-        auth: true,
-        state: {
-          accounts: this.state.accounts
-        }
-      })
-    }
-  }
-
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -51,14 +40,14 @@ class ChangePwForm extends React.Component {
           buttons: <button onClick={this.props.closeModal}>OK</button>,
           accounts: res.data.user
         });
-        this.props.updateUserName(res.data.user.username)
+        this.props.updateUserName(res.data.user)
       } else if (res.data.user) {
         this.props.setModal({
           body: <h4>Username successfully changed.</h4>,
           buttons: <button onClick={this.props.closeModal}>OK</button>,
           accounts: res.data.user
         });
-        this.props.updateUserName(res.data.user.username)
+        this.props.updateUserName(res.data.user)
       } else if (res.data.pwChange) {
         this.props.setModal({
           body: <h4>Password successfully changed.</h4>,

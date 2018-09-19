@@ -54,7 +54,6 @@ module.exports = {
     db.User.findOne({
       include: [
         { model: db.Balance },
-        { model: db.Note }
       ],
       where: { id: req.user.id }
     }).then(currentData => {

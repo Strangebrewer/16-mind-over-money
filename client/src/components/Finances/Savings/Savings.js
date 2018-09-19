@@ -36,10 +36,11 @@ class Savings extends React.Component {
         <Inner addedClass="savings-inner">
           {Object.keys(accountNames)
             .filter(key => (
-              this.props.accountNames[key] != undefined
+              this.props.accountNames[key] !== null
               && `${key}`.includes('saving')))
             .map((key, index) => (
               <SavingsDeposit
+                key={`${key}-${index}`}
                 value={this.state[key]}
                 handleInputChange={this.handleInputChange}
                 month={this.props.month}

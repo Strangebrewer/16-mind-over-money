@@ -99,7 +99,6 @@ module.exports = function (sequelize, DataTypes) {
   User.associate = function (models) {
     User.hasOne(models.Balance);
     User.hasOne(models.CCSpend);
-    User.hasOne(models.Note);
     User.hasMany(models.Expenses);
     User.hasMany(models.Checking);
     User.hasMany(models.CC1);

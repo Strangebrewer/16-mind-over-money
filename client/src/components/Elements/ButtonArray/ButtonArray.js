@@ -13,7 +13,7 @@ export const ButtonArray = props => (
     
     <div className='buttons'>
       {Object.keys(props.accounts).map((key, index) => (
-        props.accounts[key] != undefined && `${key}`.includes("cc")
+        props.accounts[key] !== null && `${key}`.includes("cc")
           ? <button key={index} onClick={() => props.toggleCCTable(`${key}`)}>{props.accounts[key]}</button>
           : null
       ))}
@@ -21,7 +21,7 @@ export const ButtonArray = props => (
 
     <div className='buttons'>
       {Object.keys(props.accounts).map((key, index) => (
-        props.accounts[key] != undefined && `${key}`.includes("det")
+        props.accounts[key] !== null && `${key}`.includes("det")
           ? <button key={index} onClick={() => props.toggleDetailTable(`${key}`)}>{props.accounts[key]}</button>
           : null
       ))}

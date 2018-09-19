@@ -52,8 +52,8 @@ class Expenses extends React.Component {
         <Inner addedClass="expenses-inner">
 
           {Object.keys(accountNames).filter(key => (
-            this.props.accountNames[key] != undefined
-            && expenses[key] != undefined
+            this.props.accountNames[key] !== null
+            && expenses[key] !== null
             && (
               `${key}`.includes('shelter')
               || `${key}`.includes('util')

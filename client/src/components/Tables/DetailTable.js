@@ -160,22 +160,16 @@ export class DetailTable extends Component {
                     accessor: "source",
                     Cell: row => {
                       switch (row.value) {
-                        case 'cc1':
-                          return this.props.accounts.cc1;
-                        case 'cc2':
-                          return this.props.accounts.cc2;
-                        case 'cc3':
-                          return this.props.accounts.cc3;
-                        case 'cc4':
-                          return this.props.accounts.cc4;
-                        case 'cc5':
-                          return this.props.accounts.cc5;
-                        case 'cc6':
-                          return this.props.accounts.cc6;
-                        case 'checking':
-                          return this.props.accounts.checking;
-                        default: return null;
+                        case 'cc1': row.value = this.props.accounts.cc1; break;
+                        case 'cc2': row.value = this.props.accounts.cc2; break;
+                        case 'cc3': row.value = this.props.accounts.cc3; break;
+                        case 'cc4': row.value = this.props.accounts.cc4; break;
+                        case 'cc5': row.value = this.props.accounts.cc5; break;
+                        case 'cc6': row.value = this.props.accounts.cc6; break;
+                        case 'checking': row.value = this.props.accounts.checking;
+                        default: console.log("No CC match found.");
                       }
+                      return row.value;
                     }
                   },
                   {

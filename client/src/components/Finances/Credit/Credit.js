@@ -41,7 +41,6 @@ class Credit extends React.Component {
   }
 
   render() {
-    const { cc1, cc2, cc3, cc4, cc5, cc6 } = this.props.accountNames;
     const accountNames = this.props.accountNames;
     const expenses = this.props.expenses;
     const ccSpend = this.props.ccSpend;
@@ -52,7 +51,7 @@ class Credit extends React.Component {
           <h2>CC PAYMENTS</h2>
           <Inner addedClass="cc-payments-inner">
             {Object.keys(this.props.accountNames).filter(key => (
-              this.props.accountNames[key] != undefined
+              this.props.accountNames[key] !== null
               && `${key}`.includes('cc'))
             ).map((key, index) => (
               <CCPayment

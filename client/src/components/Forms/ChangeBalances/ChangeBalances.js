@@ -38,7 +38,7 @@ class ChangeBalances extends React.Component {
         <Inner addedClass="balance-change-inner">
           <Textbox addedClass="balance-change-data">
             {Object.keys(accounts).map((key, index) => (
-              balances[key] != undefined
+              balances[key] !== undefined
                 ? (
                   <h4 key={`${key}-${index}`}>{accounts[key]}:
                       <span>
@@ -52,7 +52,7 @@ class ChangeBalances extends React.Component {
           <Select name="category" onChange={this.handleInputChange}>
             <Option>Select an account</Option>
             {Object.keys(accounts).map((key, index) => (
-              balances[key] != undefined
+              balances[key] !== undefined
                 ? <Option key={`${key}-${index}`} value={`${key}`}>{accounts[key]}</Option>
                 : null
             ))}

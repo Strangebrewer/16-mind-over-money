@@ -151,13 +151,14 @@ export class CheckingTable extends React.Component {
                     accessor: "category",
                     Cell: row => {
                       switch (row.value) {
-                        case "detail1": return this.props.accounts.detail1; break;
-                        case "detail2": return this.props.accounts.detail2; break;
-                        case "detail3": return this.props.accounts.detail3; break;
-                        case "detail4": return this.props.accounts.detail4; break;
-                        case "detail5": return this.props.accounts.detail5; break;
-                        default: return null;
+                        case "detail1": row.value = this.props.accounts.detail1; break;
+                        case "detail2": row.value = this.props.accounts.detail2; break;
+                        case "detail3": row.value = this.props.accounts.detail3; break;
+                        case "detail4": row.value = this.props.accounts.detail4; break;
+                        case "detail5": row.value = this.props.accounts.detail5; break;
+                        default: console.log("No Detail match found.");
                       }
+                      return row.value;
                     }
                   },
                   {

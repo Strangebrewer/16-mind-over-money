@@ -26,7 +26,6 @@ module.exports = {
             res.json(newUser);
             Promise.all([
               db.Balance.create({ UserId: newUser.id }),
-              db.Note.create({ UserId: newUser.id }),
               db.Expenses.create({
                 UserId: newUser.id,
                 month: req.body.month,
@@ -73,6 +72,7 @@ module.exports = {
             ).then(() => {
               db.User.findOne({ where: { id: req.user.id } })
                 .then(user => {
+                  console.log(user);
                   responseObject.user = user;
                   res.json(responseObject);
                 })

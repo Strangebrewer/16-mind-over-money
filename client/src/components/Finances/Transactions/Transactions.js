@@ -62,7 +62,7 @@ class Transactions extends React.Component {
                   <Option></Option>
                   {Object.keys(accountNames)
                     .filter(key => (
-                      this.props.accountNames[key] != undefined
+                      this.props.accountNames[key] !== null
                       && (
                         `${key}`.includes('check')
                         || `${key}`.includes('cc')
@@ -79,7 +79,7 @@ class Transactions extends React.Component {
                   <Option value="income">Income</Option>
                   {Object.keys(accountNames)
                     .filter(key => (
-                      this.props.accountNames[key] != undefined
+                      this.props.accountNames[key] !== null
                       && `${key}`.includes('detail')
                     ))
                     .map((key, index) => <Option key={`${key}-${index}`} value={`${key}`}>{accountNames[key]}</Option>)}
@@ -142,7 +142,7 @@ class Transactions extends React.Component {
                   <Option></Option>
                   {Object.keys(accountNames)
                     .filter(key => (
-                      this.props.accountNames[key] != undefined
+                      this.props.accountNames[key] !== null
                       && `${key}`.includes('saving')
                     ))
                     .map((key, index) => <Option key={`${key}-${index}`} value={`${key}`}>{accountNames[key]}</Option>)}

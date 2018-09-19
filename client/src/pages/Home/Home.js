@@ -67,7 +67,10 @@ class Home extends React.Component {
         loggedIn={this.props.loggedIn}
         location={this.props.location}
         pageStyle={this.state.HomeStyle}
-        username={this.props.accounts.username}
+        username={this.props.accounts.username
+          ? this.props.accounts.username
+          : this.state.username
+        }
         home={this.props.loggedIn}
         fadeToAdmin={this.fadeToAdmin}
         fadeToManage={this.fadeToManage}
