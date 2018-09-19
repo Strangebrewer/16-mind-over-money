@@ -32,7 +32,8 @@ I wanted to build another large-ish (large-ish for a personal project) full-stac
 There weren't too many difficulties in creating this app as it stands now. But difficulty wasn't my intention - broadening my understanding was. I just wanted to learn more depth as I went along. Things like more clarity and or subtlety in file structure and modularity, or class methods vs instance methods. In a forked copy, I refactored the app to use MySQL directly (sans Sequelize) and during the course of it learned more about promises by creating them in my models. This project added to my larger picture understanding of the MVC file structure in relation to cycle in a web app (user action > whatever client-side functionality > API call > router > controller > model > database > functionality > client-side functionality > display). I gained a greater understanding of classes, promises, closures, Object class methods, modularity, helper files, and it's given me some (as yet unimplemented) ideas for controlling user interaction flow.
 
 ### 4-Known Issues
-As far as I have been able to find, there are no bugs left. Everything is working as intended. If you find anything, feel free to submit a PR, or even just tell me. BKAShambala@gmail.com.
+Some of the table filters don't work properly due to the way the data is rendered within the cells. This may be corrected in a future version.
+If you find anything else, feel free to submit a PR, or just tell me about it. BKAShambala@gmail.com.
 
 ### 5-Future Development
   Some features I'd like to add once I've either used it a while and have some data to work with or I take the time to acquire/write some seed data for it.
@@ -40,7 +41,7 @@ As far as I have been able to find, there are no bugs left. Everything is workin
 2.  (which means developing more detailed number-crunching functionality all around)
 3.  Use the app as a playground for learning more advanced CSS (the original version had a lot of animated buttons that expanded into each section on click. It looked cool but made the app a little more time-consuming to use.)
 4.  Incorporate a miniature version of it into my Portfolio site (maybe just the balances and transactions components)
-5.  idea5
+5.  Refine the app to adhere to what I learned from building it: better planning leads to better organization, better file structure, better separation of concerns, better modularity.
 
 ### 6- Contributors
   Just me.
