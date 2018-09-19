@@ -36,7 +36,14 @@ module.exports = {
         $and: [{ UserId: req.user.id }, { month: req.params.month }, { year: req.params.year }]
       }
     }
-    const whereAndDefaults = {where,
+    const whereAndDefaults = {
+      where: {
+        $and: [
+          { UserId: req.user.id },
+          { month: req.params.month },
+          { year: req.params.year }
+        ]
+      },
       defaults: {
         UserId: req.user.id,
         month: req.params.month,
