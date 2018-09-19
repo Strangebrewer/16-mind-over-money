@@ -11,22 +11,22 @@ export const Navbar = props => (
             ? (
               <Fragment>
                 <button onClick={props.fadeToHome}>Go to Main Page</button>&nbsp;|&nbsp;
-                    <button onClick={props.fadeToManage}>Manage Accounts</button>&nbsp;|&nbsp;
-                  </Fragment>
+                <button onClick={props.fadeToManage}>Manage Accounts</button>&nbsp;|&nbsp;
+              </Fragment>
             ) : null}
           {props.manage
             ? (
               <Fragment>
                 <button onClick={props.fadeToHome}>Go to Main Page</button>&nbsp;|&nbsp;
-                        <button onClick={props.fadeToAdmin}>Go To Admin Page</button>&nbsp;|&nbsp;
-                      </Fragment>
+                <button onClick={props.fadeToAdmin}>Go To Admin Page</button>&nbsp;|&nbsp;
+              </Fragment>
             ) : null}
           {props.home
             ? (
               <Fragment>
                 <button onClick={props.fadeToAdmin}>Go To Admin Page</button>&nbsp;|&nbsp;
-                            <button onClick={props.fadeToManage}>Manage Accounts</button>&nbsp;|&nbsp;
-                          </Fragment>
+                <button onClick={props.fadeToManage}>Manage Accounts</button>&nbsp;|&nbsp;
+              </Fragment>
             ) : null}
           <button onClick={props.logout}>Logout</button>
         </Fragment>

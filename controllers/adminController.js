@@ -86,6 +86,7 @@ module.exports = {
 
   updateNote: function (req, res) {
     const { source, id, newNote, category, day, month, year, amount } = req.body;
+    console.log(newNote);
     let promiseArray = [];
     const note = { note: newNote };
     const sourceWhere = { where: { id: id } };

@@ -29,7 +29,6 @@ class Manage extends Component {
 
   componentWillUnmount() {
     if (this.state.usernameChanged) {
-      console.log(this.state.accounts);
       this.props.updateUser({
         auth: true,
         state: {

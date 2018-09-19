@@ -51,47 +51,51 @@ class Expenses extends React.Component {
         <h2>EXPENSES</h2>
         <Inner addedClass="expenses-inner">
 
-          {Object.keys(accountNames).filter(key => (
-            this.props.accountNames[key] !== null
-            && expenses[key] !== null
-            && (
-              `${key}`.includes('shelter')
-              || `${key}`.includes('util')
-              || `${key}`.includes('car')
-              || `${key}`.includes('insurance')
-              || `${key}`.includes('other')
-            )
-          )).map((key, index) => (
-            <Expense
-              key={`${key}-${index}`}
-              value={this.state[key]}
-              name={`${key}`}
-              handleInputChange={this.handleInputChange}
-              month={this.props.month}
-              year={this.props.year}
-              item={accountNames[key]}
-              expenses={expenses}
-              expenseItem={expenses[key]}
-            />
-          ))}
+          {Object.keys(accountNames)
+            .filter(key => (
+              this.props.accountNames[key] !== null
+              && expenses[key] !== null
+              && (
+                `${key}`.includes('shelter')
+                || `${key}`.includes('util')
+                || `${key}`.includes('car')
+                || `${key}`.includes('insurance')
+                || `${key}`.includes('other')
+              )
+            ))
+            .map((key, index) => (
+              <Expense
+                key={`${key}-${index}`}
+                value={this.state[key]}
+                name={`${key}`}
+                handleInputChange={this.handleInputChange}
+                month={this.props.month}
+                year={this.props.year}
+                item={accountNames[key]}
+                expenses={expenses}
+                expenseItem={expenses[key]}
+              />
+            ))}
 
-          <FormBtn
-            disabled={
-              !this.state.shelter
-              && !this.state.util1
-              && !this.state.util2
-              && !this.state.util3
-              && !this.state.util4
-              && !this.state.util5
-              && !this.state.car
-              && !this.state.insurance
-              && !this.state.other1
-              && !this.state.other2
-              && !this.state.other3
-            }
-            onClick={this.updateExpenses}
-            value="submit"
-          />
+          <div>
+            <FormBtn
+              disabled={
+                !this.state.shelter
+                && !this.state.util1
+                && !this.state.util2
+                && !this.state.util3
+                && !this.state.util4
+                && !this.state.util5
+                && !this.state.car
+                && !this.state.insurance
+                && !this.state.other1
+                && !this.state.other2
+                && !this.state.other3
+              }
+              onClick={this.updateExpenses}
+              value="submit"
+            />
+          </div>
 
         </Inner>
       </Outer>

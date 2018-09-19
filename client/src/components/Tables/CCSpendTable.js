@@ -1,7 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { API, Tables } from "../../utils";
-import Modal from "../../components/Elements/Modal";
-import LoadingModal from "../../components/Elements/LoadingModal";
 import ReactTable from "react-table";
 import dateFns from "date-fns";
 import "react-table/react-table.css";
@@ -9,11 +7,6 @@ import "./Tables.css";
 
 export class CCSpendTable extends React.Component {
   state = {
-    modal: {
-      isOpen: false,
-      body: "",
-      buttons: ""
-    },
     names: [],
     ccSpend: []
   };
@@ -21,33 +14,6 @@ export class CCSpendTable extends React.Component {
   componentDidMount() {
     this.getCCSpend();
   }
-
-  closeModal = () => {
-    this.setState({ modal: { isOpen: false } });
-  };
-
-  setModal = (modalInput) => {
-    this.setState({
-      modal: {
-        isOpen: true,
-        body: modalInput.body,
-        buttons: modalInput.buttons
-      }
-    });
-  };
-
-  //  Toggles a non-dismissable loading modal to prevent clicks while database ops are ongoing
-  toggleLoadingModal = () => {
-    this.setState({
-      loadingModalOpen: !this.state.loadingModalOpen
-    });
-  };
-
-  // Standard input change controller
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
 
   getCCSpend = () => {
     API.getCCSpend()
@@ -66,26 +32,16 @@ export class CCSpendTable extends React.Component {
 
   render() {
     return (
-      <Fragment>
-        <Modal
-          show={this.state.modal.isOpen}
-          closeModal={this.closeModal}
-          body={this.state.modal.body}
-          buttons={this.state.modal.buttons}
+      <div className="main-table-container">
+        <ReactTable
+          data={this.state.ccSpend}
+          filterable
+          columns={this.state.names}
+          defaultSorted={[{ id: "addDate", asc: true }]}
+          defaultPageSize={5}
+          className="-striped -highlight"
         />
-        <LoadingModal show={this.state.loadingModalOpen} />
-
-        <div className="main-table-container">
-          <ReactTable
-            data={this.state.ccSpend}
-            filterable
-            columns={this.state.names}
-            defaultSorted={[{ id: "addDate", asc: true }]}
-            defaultPageSize={5}
-            className="-striped -highlight"
-          />
-        </div>
-      </Fragment>
+      </div>
     )
   }
 }

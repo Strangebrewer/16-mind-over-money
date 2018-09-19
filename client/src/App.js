@@ -34,8 +34,6 @@ class App extends React.Component {
     setupNames: false,
     setupBalances: false,
     accounts: {},
-    financeExitStyle: {},
-    adminExitStyle: {},
     redirectAdmin: false,
     redirectHome: false
   };

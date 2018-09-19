@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import { Page } from "../../components/Elements/Containers";
 import { ButtonArray } from "../../components/Elements/ButtonArray";
-// import Modal from "../../components/Elements/Modal";
-// import LoadingModal from "../../components/Elements/LoadingModal";
 import { FastFade } from "../../components/Fade";
 import { API, Helpers } from "../../utils";
 import { ExpensesTable, CCTable, CheckingTable, DetailTable, CCSpendTable } from "../../components/Tables/";
 
-class Admin extends Component {
+class Admin extends React.Component {
   state = {
     modal: {
       isOpen: false,
@@ -44,11 +42,6 @@ class Admin extends Component {
         this.setState({ accounts: accounts })
       })
   }
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
 
   toggleTables = () => {
     this.setState({ expenses: true });

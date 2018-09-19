@@ -1,19 +1,12 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import { API, Tables } from "../../utils";
-import Modal from "../../components/Elements/Modal";
-import LoadingModal from "../../components/Elements/LoadingModal";
 import ReactTable from "react-table";
 import dateFns from "date-fns";
 import "react-table/react-table.css";
 import "./Tables.css";
 
-export class ExpensesTable extends Component {
+export class ExpensesTable extends React.Component {
   state = {
-    modal: {
-      isOpen: false,
-      body: "",
-      buttons: ""
-    },
     names: [],
     expenses: []
   };
@@ -37,57 +30,20 @@ export class ExpensesTable extends Component {
       })
   }
 
-  closeModal = () => {
-    this.setState({ modal: { isOpen: false } });
-  };
-
-  setModal = (modalInput) => {
-    this.setState({
-      modal: {
-        isOpen: true,
-        body: modalInput.body,
-        buttons: modalInput.buttons
-      }
-    });
-  };
-
-  //  Toggles a non-dismissable loading modal to prevent clicks while database ops are ongoing
-  toggleLoadingModal = () => {
-    this.setState({
-      loadingModalOpen: !this.state.loadingModalOpen
-    });
-  };
-
-  // Standard input change controller
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
   render() {
     return (
-      <Fragment>
-        <Modal
-          show={this.state.modal.isOpen}
-          closeModal={this.closeModal}
-          body={this.state.modal.body}
-          buttons={this.state.modal.buttons}
-        />
-        <LoadingModal show={this.state.loadingModalOpen} />
-
-        <div className="main-table-container">
-          {this.state.expenses.length > 0
-            ? <ReactTable
-              data={this.state.expenses}
-              filterable
-              columns={this.state.names}
-              defaultSorted={[{ id: "addDate", asc: true }]}
-              defaultPageSize={5}
-              className="-striped -highlight"
-            />
-            : null}
-        </div>
-      </Fragment>
+      <div className="main-table-container">
+        {this.state.expenses.length > 0
+          ? <ReactTable
+            data={this.state.expenses}
+            filterable
+            columns={this.state.names}
+            defaultSorted={[{ id: "addDate", asc: true }]}
+            defaultPageSize={5}
+            className="-striped -highlight"
+          />
+          : null}
+      </div>
     )
   }
 };

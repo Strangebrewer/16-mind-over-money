@@ -73,10 +73,7 @@ export class DetailTable extends Component {
 
   noteModal = row => {
     this.setModal({
-      body:
-        <Fragment>
-          <Textarea name="note" onChange={this.handleInputChange} rows="10" cols="80" defaultValue={row.note}></Textarea>
-        </Fragment>,
+      body: <Textarea name="note" onChange={this.handleInputChange} rows="10" cols="80" defaultValue={row.note}></Textarea>,
       buttons:
         <Fragment>
           <button onClick={() => this.submitNote(row, this.state.note)}>Submit</button>
@@ -166,8 +163,8 @@ export class DetailTable extends Component {
                         case 'cc4': row.value = this.props.accounts.cc4; break;
                         case 'cc5': row.value = this.props.accounts.cc5; break;
                         case 'cc6': row.value = this.props.accounts.cc6; break;
-                        case 'checking': row.value = this.props.accounts.checking;
-                        default: console.log("No CC match found.");
+                        case 'checking': row.value = this.props.accounts.checking; break;
+                        default: return row.value;
                       }
                       return row.value;
                     }

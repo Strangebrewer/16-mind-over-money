@@ -54,7 +54,6 @@ export class CheckingTable extends React.Component {
       .then(res => {
         res.data.forEach(rec => {
           rec.date = dateFns.format(`${rec.month} ${rec.day}, ${rec.year}`, 'YYYY-MM-DD');
-          console.log(rec.date);
         });
         this.setState({ checking: res.data })
       })
@@ -72,10 +71,7 @@ export class CheckingTable extends React.Component {
 
   noteModal = row => {
     this.setModal({
-      body:
-        <Fragment>
-          <Textarea name="note" onChange={this.handleInputChange} rows="10" cols="80" defaultValue={row.note}></Textarea>
-        </Fragment>,
+      body: <Textarea name="note" onChange={this.handleInputChange} rows="10" cols="80" defaultValue={row.note}></Textarea>,
       buttons:
         <Fragment>
           <button onClick={() => this.submitNote(row, this.state.note)}>Submit</button>
@@ -156,7 +152,7 @@ export class CheckingTable extends React.Component {
                         case "detail3": row.value = this.props.accounts.detail3; break;
                         case "detail4": row.value = this.props.accounts.detail4; break;
                         case "detail5": row.value = this.props.accounts.detail5; break;
-                        default: console.log("No Detail match found.");
+                        default: return row.value;
                       }
                       return row.value;
                     }

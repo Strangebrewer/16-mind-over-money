@@ -37,25 +37,27 @@ class ChangeBalances extends React.Component {
         <h2>ADJUST BALANCES</h2>
         <Inner addedClass="balance-change-inner">
           <Textbox addedClass="balance-change-data">
-            {Object.keys(accounts).map((key, index) => (
-              balances[key] !== undefined
-                ? (
-                  <h4 key={`${key}-${index}`}>{accounts[key]}:
+            {Object.keys(accounts)
+              .map((key, index) => (
+                balances[key] !== undefined
+                  ? (
+                    <h4 key={`${key}-${index}`}>{accounts[key]}:
                       <span>
-                      <Currency quantity={parseFloat(balances[key])} />
-                    </span>
-                  </h4>
-                ) : null
-            ))}
+                        <Currency quantity={parseFloat(balances[key])} />
+                      </span>
+                    </h4>
+                  ) : null
+              ))}
           </Textbox>
 
           <Select name="category" onChange={this.handleInputChange}>
             <Option>Select an account</Option>
-            {Object.keys(accounts).map((key, index) => (
-              balances[key] !== undefined
-                ? <Option key={`${key}-${index}`} value={`${key}`}>{accounts[key]}</Option>
-                : null
-            ))}
+            {Object.keys(accounts)
+              .map((key, index) => (
+                balances[key] !== undefined
+                  ? <Option key={`${key}-${index}`} value={`${key}`}>{accounts[key]}</Option>
+                  : null
+              ))}
           </Select>
 
           <Select name="type" onChange={this.handleInputChange}>

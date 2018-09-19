@@ -2,16 +2,6 @@ const db = require('../models');
 const bCrypt = require('bcrypt-nodejs');
 
 module.exports = {
-  getUser: function (req, res) {
-    if (req.user) {
-      db.User.findOne({ where: { id: req.user.id } })
-        .then(response => {
-          res.json(response);
-        });
-    } else {
-      res.json({ user: null })
-    }
-  },
 
   signup: function (req, res) {
     const { username, password } = req.body;
@@ -75,10 +65,10 @@ module.exports = {
                   console.log(user);
                   responseObject.user = user;
                   res.json(responseObject);
-                })
-            })
+                }).catch(err => console.log(err));
+            }).catch(err => console.log(err));
           }
-        })
+        }).catch(err => console.log(err));
     }
 
     if (username && currentPassword && newPassword) {
@@ -106,9 +96,8 @@ module.exports = {
                     //  Get the new user info and send the response:
                     responseObject.user = user;
                     res.json(responseObject);
-                  })
-                  .catch(err => res.send(err));
-              })
+                  }).catch(err => res.send(err));
+              }).catch(err => console.log(err));
             } else {
               //  if the password is not a match, send a response:
               responseObject.error = "Incorrect password."
@@ -128,8 +117,7 @@ module.exports = {
         ).then(response => {
           responseObject.pwChange = response[0];
           res.json(responseObject);
-        })
-          .catch(err => console.log(err));
+        }).catch(err => console.log(err));
       } else {
         responseObject.error = "Incorrect password.";
         res.json(responseObject);

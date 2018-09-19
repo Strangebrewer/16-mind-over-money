@@ -64,7 +64,6 @@ export class Finances extends React.Component {
 
     API.getFinances(month, year)
       .then(res => {
-        console.log(res);
         const income = res.data.transactions[1]
           .filter(chk => chk.income === true);
         const debits = res.data.transactions[1]
@@ -85,12 +84,6 @@ export class Finances extends React.Component {
         });
       })
   }
-
-  // Standard input change controller
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
 
   handleDateChange = (month, year) => {
     API.getFinances(month, year)

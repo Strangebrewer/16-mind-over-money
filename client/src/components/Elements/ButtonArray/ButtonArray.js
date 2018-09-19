@@ -10,21 +10,23 @@ export const ButtonArray = props => (
       <button onClick={props.toggleCcSpendTable}>CC Totals</button>
       <button onClick={props.hideAllTables}>Clear Tables</button>
     </div>
-    
+
     <div className='buttons'>
-      {Object.keys(props.accounts).map((key, index) => (
-        props.accounts[key] !== null && `${key}`.includes("cc")
-          ? <button key={index} onClick={() => props.toggleCCTable(`${key}`)}>{props.accounts[key]}</button>
-          : null
-      ))}
+      {Object.keys(props.accounts)
+        .map((key, index) => (
+          props.accounts[key] !== null && `${key}`.includes("cc")
+            ? <button key={index} onClick={() => props.toggleCCTable(`${key}`)}>{props.accounts[key]}</button>
+            : null
+        ))}
     </div>
 
     <div className='buttons'>
-      {Object.keys(props.accounts).map((key, index) => (
-        props.accounts[key] !== null && `${key}`.includes("det")
-          ? <button key={index} onClick={() => props.toggleDetailTable(`${key}`)}>{props.accounts[key]}</button>
-          : null
-      ))}
+      {Object.keys(props.accounts)
+        .map((key, index) => (
+          props.accounts[key] !== null && `${key}`.includes("det")
+            ? <button key={index} onClick={() => props.toggleDetailTable(`${key}`)}>{props.accounts[key]}</button>
+            : null
+        ))}
     </div>
   </Fragment >
 );

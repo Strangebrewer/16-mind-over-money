@@ -158,7 +158,7 @@ export class CCTable extends React.Component {
                         case "detail3": row.value = this.props.accounts.detail3; break;
                         case "detail4": row.value = this.props.accounts.detail4; break;
                         case "detail5": row.value = this.props.accounts.detail5; break;
-                        default: console.log("No Detail match found.");
+                        default: return row.value;
                       }
                       return row.value;
                     }

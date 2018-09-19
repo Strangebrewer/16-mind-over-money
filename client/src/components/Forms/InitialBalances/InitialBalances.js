@@ -80,9 +80,7 @@ class InitialBalances extends React.Component {
   }
 
   render() {
-    // const { checking, cc1, cc2, cc3, cc4, cc5, cc6, savings1, savings2, savings3 } = this.props.accounts;
     const accounts = this.props.accounts;
-
     const balanceArray = [
       <Outer addedClass="initial-balances-container" style={this.state.style.balancesForm}>
         <h2>SET INITIAL BALANCES</h2>
@@ -94,11 +92,13 @@ class InitialBalances extends React.Component {
               <li>You can come back and adjust the balances later.</li>
             </ul>
           </Textbox>
-            {Object.keys(accounts).filter(key => (
+          {Object.keys(accounts)
+            .filter(key => (
               `${key}`.includes('check')
               || `${key}`.includes('cc')
               || `${key}`.includes('sav')
-            )).map((key, index) => (
+            ))
+            .map((key, index) => (
               <Input
                 key={`${key}-${index}`}
                 value={this.state[key]}
@@ -108,7 +108,7 @@ class InitialBalances extends React.Component {
                 label={`${accounts[key]}:`}
               />
             ))}
-            <FormBtn onClick={this.handleFormSubmit} value="submit" />
+          <FormBtn onClick={this.handleFormSubmit} value="submit" />
         </Inner>
       </Outer>
     ];
