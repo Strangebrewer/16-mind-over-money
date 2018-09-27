@@ -45,3 +45,15 @@ If you find anything else, feel free to submit a PR, or just tell me about it. B
 
 ### 6- Contributors
   Just me.
+
+
+TO ADD TO THIS README:
+  This app is a personal project that recreates the functionality of a budgeting Excel workbook that has been in development and use for personal finances over several years.
+
+It offers detailed records and an at-a-glance summary of balances and trends. It records monthly bills, credit card payments, savings deposits, and checking and credit card expenses.
+
+It is customizable in that you name your accounts, you decide how many accounts you wish to track, how many bills you wish to track, and which categories of expenses you wish to track. Categories can be tracked regardless of which spending method you use (checking, which credit card, etc.). It also averages expenses by month.
+
+Part of the challenge of this project (and this is an ongoing challenge) is making the app functionality as easy and clear as just using the original spreadsheet. Excel does all of the things this app does (and several it doesn't) fairly well and easily, too, so this is no small challenge. There are nuances in the sorting methods that could be improved. There could be more information with each entry on the homepage (like the usual amount due on predictable bills, like a mortgage, car payment, etc.). The page layout needs improvement and the logo, while cool to learn as a first step into SVG, looks very 90s to me, so it'll eventually get a redesign. It should be smaller after sign-in to make more room for the UI.
+
+But those will be put on hold for a bit while I build a couple smaller projects to explore some new ideas I learned from this one.
