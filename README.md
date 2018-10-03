@@ -13,7 +13,7 @@
 I wanted to build another large-ish (large-ish for a personal project) full-stack app to keep in practice and to see what I could learn from it. This app reproduces the functionality from an Excel spreadsheet I sometimes use to track my finances. I've sporadically developed and added to it (the spreadsheet) over the years, so there's a bit of complexity to it, which made it an interesting web development project. This app:
 - is customizable in that you name your accounts, you decide how many accounts you wish to track, how many bills you wish to track, and which categories of expenses you wish to track
 - tracks specific categories of spending that you designate yourself (e.g. Food, Entertainment, Car Repair, Gas)
-- categories can be tracked regardless of which spending method you use (checking, which credit card, etc.)
+- allows you to track spending category regardless of which spending method you use (checking, which credit card, etc.)
 - offers detailed records and an at-a-glance summary of balances and trends
 - allows you to record monthly bills, credit card payments, savings deposits, and checking and credit card expenses
 - tracks specific categories of spending that you designate yourself (e.g. Food, Entertainment, Car Repair, Gas)
