@@ -17,7 +17,7 @@ I wanted to build another large-ish (large-ish for a personal project) full-stac
 - offers detailed records and an at-a-glance summary of balances and trends
 - allows you to record monthly bills, credit card payments, savings deposits, and checking and credit card expenses
 - tracks specific categories of spending that you designate yourself (e.g. Food, Entertainment, Car Repair, Gas)
-- automatically tallies the average you spend on each monthly bill (with the sheet I have to highlight what I want averaged)
+- automatically tallies the average you spend on each monthly bill
 - compares spending to income and analyzes credit card spending vs payments (and whether your pattern is accruing or decreasing debt)
 - then displays the differences along with a brief reminder blurb of advice emphasizing (in simple, broad terms) what adjustments are would help.
 
@@ -38,23 +38,19 @@ I wanted to build another large-ish (large-ish for a personal project) full-stac
 - And several other packages, such as axios, bcrypt-nodejs, date-fns, money-math, and react-currency-formatter.
 
 ### 3-Challenges & Learning
-There weren't too many difficulties in creating this app as it stands now. But difficulty wasn't my intention - broadening my understanding was. I just wanted to learn more depth as I went along. Things like more clarity and or subtlety in file structure and modularity, or class methods vs instance methods. In a forked copy, I refactored the app to use MySQL directly (sans Sequelize) and during the course of it learned more about promises by creating them in my models. This project added to my larger picture understanding of the MVC file structure in relation to cycle in a web app (user action > whatever client-side functionality > API call > router > controller > model > database > functionality > client-side functionality > display). I gained a greater understanding of classes, promises, closures, Object class methods, modularity, helper files, and it's given me some (as yet unimplemented) ideas for controlling user interaction flow.
+There weren't too many difficulties in creating this app as it stands now. But difficulty wasn't my intention - broadening my understanding was. I just wanted to learn more depth as I went along. Things like more clarity and/or subtlety in file structure and modularity, class methods vs instance methods, and more efficient patterns for passing props and displaying results. In a forked copy, I refactored the app to use MySQL directly (sans Sequelize) and during the course of it learned more about promises by creating them in my models. This project added to my larger picture understanding of the MVC file structure in relation to cycle in a web app. I gained a greater understanding of classes, promises, closures, Object class methods, modularity, helper files. I also have some new (and as yet unimplemented) ideas for controlling user interaction flow.
 
-Part of the challenge of this project (and this is an ongoing challenge) is making the app functionality just as easy and clear as using the original spreadsheet. Excel does all of the things this app does (and several it doesn't) fairly well, and easily too, so this is no small challenge. There are nuances in the sorting methods that could be improved. There could be more information with each entry on the homepage (like the usual amount due on predictable bills, like a mortgage, car payment, etc.). The page layout needs improvement and the logo, while cool to learn as a first step into SVG, looks very 90s to me, so it'll eventually get a redesign. It should be smaller after sign-in to make more room for the UI.
+Part of the challenge of this project (and this is an ongoing challenge) is making the app functionality just as easy and clear as using the original spreadsheet. Excel does all of the things this app does (and several things it doesn't) fairly well, and easily too, so this is no small challenge. There are nuances in the sorting methods that could be improved. There could be more information with each entry on the homepage (like the usual amount due on predictable bills, such as a mortgage or a car payment). The page layout needs improvement and the logo, while useful as a first step into SVG, looks very 90s to me, so it will eventually need a redesign. It should also be smaller after sign-in to make more room for the UI.
 
 But those will be put on hold for a bit while I build a couple smaller projects to explore some new ideas I learned from this one.
 
 ### 4-Known Issues
-Some of the table filters don't work properly due to the way the data is rendered within the cells. This may be corrected in a future version.
-If you find anything else, feel free to submit a PR, or just tell me about it. BKAShambala@gmail.com.
+Some of the table filters don't work properly due to the way the data is rendered within the cells. This may be corrected in a future version. If you find any issues, feel free to submit a PR, or just tell me about it. BKAShambala@gmail.com.
 
-### 5-Future Development
-  Some features I'd like to add once I've either used it a while and have some data to work with or I take the time to acquire/write some seed data for it.
-1.  Graphs for patterns and trends
-2.  (which means developing more detailed number-crunching functionality all around)
-3.  Use the app as a playground for learning more advanced CSS (the original version had a lot of animated buttons that expanded into each section on click. It looked cool but made the app a little more time-consuming to use.)
-4.  Incorporate a miniature version of it into my Portfolio site (maybe just the balances and transactions components)
-5.  Refine the app to adhere to what I learned from building it: better planning leads to better organization, better file structure, better separation of concerns, better modularity.
+### 5-Ideas for Future Development
+1.  Graphs for patterns and trends (which means developing more detailed number-crunching functionality all around)
+2.  Incorporate a miniature version of it into my Portfolio site (maybe just the balances and transactions components)
+3.  Refine the app to adhere to what I learned from building it: better planning leads to better organization, better file structure, better separation of concerns, better modularity.
 
 ### 6- Contributors
   Just me.
